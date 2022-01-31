@@ -15,9 +15,8 @@ function App() {
       {
         user ?
         <>
-          <NavBar />
+        <NavBar />
           <Routes>
-            {/* Future routes go here */}
             <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
           </Routes>
