@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
+
+const SALT_ROUNDS = 6;
 
 const userSchema = new Schema({
     name: {type: String, required: true},
@@ -17,7 +20,22 @@ const userSchema = new Schema({
         required: true
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    toJSON: {
+        transform: function(doc, ret) {
+            delete ret.password;
+            return ret;
+        }
+    }
 });
+
+userSchema.pre('save', async function(next) {
+    // turn password into a hash when it changes (once at pw creation and anytime when user changes pw)
+    if (!this.isModified('password')) return next();
+    // update the password with a has if it has been modified
+    this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
+    return next();
+});
+
 
 module.exports = mongoose.model('User', userSchema);
