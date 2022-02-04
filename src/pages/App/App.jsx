@@ -6,7 +6,9 @@ import { Routes, Route } from "react-router-dom";
 import AuthPage from "../AuthPage/AuthPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import HomePage from "../HomePage/HomePage";
+import ProfilePage from "../ProfilePage/ProfilePage";
 import NavBar from "../../components/NavBar/NavBar";
+import CheckoutPage from "../CheckoutPage/CheckoutPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -19,8 +21,9 @@ function App() {
   
           <Routes>
             <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />
-            <Route path="/signup" element={<SignUpPage user={user} user={user} setUser={setUser}/>} />
-            {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
+            <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
+            <Route path="/profile" element={<ProfilePage user={user} />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </>
