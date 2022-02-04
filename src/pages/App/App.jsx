@@ -15,13 +15,13 @@ function App() {
     <main className="App">
       {
         <>
-          <NavBar />
-
+          <NavBar user={user}/>
+  
           <Routes>
-            <Route path="/login" element={<AuthPage setUser={setUser}/>} />
-            <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
+            <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />
+            <Route path="/signup" element={<SignUpPage user={user} user={user} setUser={setUser}/>} />
             {/* <Route path="/checkout" element={<CheckoutPage />} /> */}
-            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </>
 

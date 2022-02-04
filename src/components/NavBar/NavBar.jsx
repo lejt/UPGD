@@ -19,7 +19,7 @@ export default function NavBar({user, setUser}) {
             <span>Welcome, {user.name}!</span>  
             &nbsp; | &nbsp;
             <Link to="" onClick={handleLogOut}>Log Out</Link>  */}
-            <img src="" alt="" />
+            <Link to="/">Home</Link>
             <div className="header_nav">
                 <div className="header_option">
                     <span>All Products</span>
@@ -29,10 +29,13 @@ export default function NavBar({user, setUser}) {
                 </div>
                 <div className="header_option">
                     { user ?
-                        <Link to="" >
-                            <span>Profile</span>
-                            {/* drop down with profile option and logout option */}
-                        </Link>
+                        <div className="dropdown">
+                            <button className="dropbtn">Profile/LogOut</button>
+                            <div className="dropdown_content">
+                                <Link to=""><p>Profile</p></Link>
+                                <Link to="" onClick={handleLogOut}><p>Log Out</p></Link>
+                            </div>
+                        </div>
                         :
                         <div className="dropdown">
                             <button className="dropbtn">Login/SignUp</button>
@@ -43,12 +46,6 @@ export default function NavBar({user, setUser}) {
                         </div>
                     }
                 </div>
-                {/* <Link to="" onClick={handleLogOut}>
-                    <div className="header_option">
-                        <span>Welcome</span>
-                        <span>Name</span>
-                    </div>
-                </Link> */}
             </div>
         
         
