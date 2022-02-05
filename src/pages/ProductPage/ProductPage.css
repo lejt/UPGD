@@ -1,14 +1,14 @@
-.product {
+.products {
     height: 100vh;
 }
-.product_banner {
+.products_banner {
     background-color: gray;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.product_header {
+.products_header {
     height: 40px;
     display: flex;
     align-items: center;
@@ -17,9 +17,15 @@
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
-.product_categories {
-    width: 30%;
-    border-right: 1px solid black;
+.products_display {
+    display: flex;
+}
+.products_categories {
+    min-width: 20%;
+    /* border-right: 1px solid black; */
     /* border: 1px solid blue; */
     height: 60vh;
+}
+.products {
+    /* border: 2px solid green; */
 }
