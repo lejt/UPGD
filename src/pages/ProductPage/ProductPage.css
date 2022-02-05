@@ -1,0 +1,25 @@
+.product {
+    height: 100vh;
+}
+.product_banner {
+    background-color: gray;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product_header {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.product_categories {
+    width: 30%;
+    border-right: 1px solid black;
+    /* border: 1px solid blue; */
+    height: 60vh;
+}

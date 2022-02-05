@@ -1,7 +1,12 @@
 import "./ProfilePage.css";
 
-export default function ProfilePage() {
+export default function ProfilePage({user}) {
     return (
-        <h1>PROFILE PAGE HERE</h1>
+        <div>
+            <p>
+                {user.name}<br/>
+                {user.email}
+            </p>
+        </div>
     )
 }

@@ -20,7 +20,7 @@ export default function NavBar({user, setUser}) {
             </div>
             <div className="navbar-menu">
                 <div className="navbar-end">
-                    <Link to="" className="navbar-item">
+                    <Link to="/products" className="navbar-item">
                         <span>All Products</span>
                     </Link>
                     <Link to="" className="navbar-item">

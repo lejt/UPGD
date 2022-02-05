@@ -1,0 +1,13 @@
+.checkout {
+    display: flex;
+}
+.checkout_payment {
+    border: 5px solid green;
+    width: 50%;
+    min-height: 100vh;
+}
+.checkout_cart {
+    border: 5px solid rgb(8, 68, 121);
+    width: 50%;
+    min-height: 100vh;
+}
