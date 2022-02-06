@@ -3,21 +3,33 @@ import { useState, useEffect } from 'react';
 // import * as productsAPI from "../../utilities/product-api"; 
 import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
+import CategoryList from "../../components/CategoryList/CategoryList";
 
 export default function Product() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(function() {
         async function getProducts() {
             const items = await itemsAPI.getAll();
             // console.log(items.products);
             // console.log(Object.values(items.products))
+            // console.log(items.products)
             setProducts(Object.values(items.products));
         }
         getProducts();
 
     },[]);
     
+    function handleChange(evt) {
+        setSearchQuery(evt.target.value);
+    }
+
+    async function searchProducts(searchQuery) {
+        const items = await itemsAPI.getAll(searchQuery);
+        setProducts(Object.values(items.products));
+    }
+
     return (
         <div className="products">
             <div className="products_banner">
@@ -25,12 +37,18 @@ export default function Product() {
             </div>
             <div className="products_header">
                 <h3># of Items</h3>
-                <h3>Sort By</h3>
+                <div className="products_header_right">
+                    <div className="products_searchBar">
+                        <input className="products_searchInput" type="text" name="search" value={searchQuery} onChange={handleChange} placeholder="Look up products"/>
+                        <button onClick={()=> searchProducts(searchQuery)}>Search</button>
+                    </div>
+                    <h3>Sort By</h3>
+                </div>
             </div>
 
             <div className="products_display">
                 <aside className="products_categories">
-                    <h2>Product categories</h2>
+                    <CategoryList />
                 </aside>
                 <aside className="products">
                     {/* {console.log(products.products)} */}

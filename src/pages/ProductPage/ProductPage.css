@@ -17,6 +17,13 @@
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
+.products_header_right {
+    display: flex;
+    /* border: 1px solid blue; */
+}
+.products_searchBar {
+    margin-right: 30px;
+}
 .products_display {
     display: flex;
 }
