@@ -10,6 +10,7 @@ import ProfilePage from "../ProfilePage/ProfilePage";
 import NavBar from "../../components/NavBar/NavBar";
 import CheckoutPage from "../CheckoutPage/CheckoutPage";
 import ProductPage from "../ProductPage/ProductPage";
+import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -25,6 +26,7 @@ function App() {
             <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
             <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/products" element={<ProductPage />} />
+            <Route path="/products/:productName" element={<ProductDetailPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
