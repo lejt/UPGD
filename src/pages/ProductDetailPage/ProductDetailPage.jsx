@@ -9,6 +9,7 @@ export default function ProductDetailPage() {
     const [productOne, setProductOne] = useState([]);
     const [productReviews, setProductReviews] = useState([]);
     const [productImage, setProductImage] = useState("");
+    const [productInfo, setProductInfo] = useState("");
     
     const { productName } = useParams();
     const location = useLocation();
@@ -26,6 +27,7 @@ export default function ProductDetailPage() {
             setProductOne(item.products[0])
             setProductReviews(item.products[0].reviews)
             setProductImage(item.products[0].image[0][1])
+            setProductInfo(item.products[0].product_info[0][0])
         }
         getProductFromURL();
 
@@ -44,8 +46,11 @@ export default function ProductDetailPage() {
                     { productOne.price}
                 </div>
             </div>
-            <div className="product_info content">
-                {productOne.product_info}
+            <hr/>
+            <div className="product_info">
+                <h4 className="title is-4">Description</h4>
+                {/* <p>{productOne.product_info}</p> */}
+                <p>{productInfo}</p>
             </div>
             <hr/>
             <div className="product_reviews">
@@ -54,7 +59,13 @@ export default function ProductDetailPage() {
                 {productReviews ? console.log("PR exists"): console.log("PR needs to load some more")} */}
                 {/* {console.log(productOne)} */}
                 {/* {console.log(productReviews)} */}
-                {productReviews.map((r, idx)=> <ProductReview review={r} key={idx} />)}
+                {productReviews
+                ?
+                productReviews.map((r, idx)=> <ProductReview review={r} key={idx} />)
+                :
+                <p className="product_no_reviews">No Reviews Present</p>
+                }
+                {/* {productReviews.map((r, idx)=> <ProductReview review={r} key={idx} />)} */}
    
             </div>
         </div>

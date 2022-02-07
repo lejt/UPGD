@@ -17,6 +17,15 @@
     padding-left: 30px;
     padding-right: 30px;
 }
+.product_info {
+    margin: 0 30px;
+}
+.product_info p {
+    margin: 30px;
+}
 .product_reviews_title {
     margin-left: 30px;
+}
+.product_no_reviews {
+    margin-left: 60px;
 }
