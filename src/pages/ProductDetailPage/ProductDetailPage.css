@@ -1,0 +1,22 @@
+.product_header {
+    display: flex;
+    margin-top: 50px;
+}
+.product_image {
+    /* border: 1px solid black; */
+    width: 50%;
+}
+.product_image img {
+    padding: 10px;
+
+}
+.product_profile {
+    width: 50%;
+    /* border: 1px solid blue; */
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.product_reviews_title {
+    margin-left: 30px;
+}

@@ -1,20 +1,23 @@
-var unirest = require("unirest");
-
-export default function getAll() {
-	var req = unirest("GET", "https://newegg-data-scraper.p.rapidapi.com/search/RTX");
-	
-	req.headers({
-		"searchquery": "RTX",
+export async function getOne(url) {
+	// console.log(url, typeof url)
+	const options = {
+	  "method": "GET",
+	  "headers": {
+		'Access-Control-Allow-Origin': "*",
+		"Access-Control-Allow-Headers": "Content-Type, Authorization",
 		"x-rapidapi-key": "77fa2025c7mshfb82d24d93cebc3p1c01edjsn7920b40f87dd",
 		"x-rapidapi-host": "newegg-data-scraper.p.rapidapi.com",
-		"useQueryString": true
-	});
-	
-	
-	req.end(function (res) {
-		if (res.error) throw new Error(res.error);
-	
-		// console.log(res.body);
-	  	// return res.body.products.forEach(p=> console.log(p.title));
-	});
+	  },
+	}
+	// await fetch(url, options)
+	// .then(response => {
+	//   console.log(response);
+	// })
+	// .catch(err => {
+	//   console.error(err);
+	// });
+  
+	const res = await fetch(url, options)
+	if (res.ok) return res.json();
+	throw new Error('Bad Request');
 }

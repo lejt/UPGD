@@ -10,6 +10,13 @@ require('dotenv').config();
 require('./config/database');
 
 const app = express();
+// for CORS
+// const cors = require("cors")
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// )
 
 app.use(logger('dev'));
 app.use(express.json());

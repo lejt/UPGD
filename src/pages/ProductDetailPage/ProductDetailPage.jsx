@@ -1,14 +1,62 @@
 import "./ProductDetailPage.css";
+import { useState, useEffect } from 'react';
 import { useParams, useLocation } from "react-router-dom";
+import * as itemsAPI from '../../utilities/items-api';
+import * as productAPI from '../../utilities/product-api';
+import ProductReview from '../../components/ProductReview/ProductReview';
 
 export default function ProductDetailPage() {
-    const { productName } = useParams();
-    const { state } = useLocation();
+    const [productOne, setProductOne] = useState([]);
+    const [productReviews, setProductReviews] = useState([]);
+    const [productImage, setProductImage] = useState("");
     
+    const { productName } = useParams();
+    const location = useLocation();
+    const productPassed = location.state.dataToDetail;
+
+    useEffect(function() {
+        async function getProductFromURL() {
+            const item = await itemsAPI.getOne(productPassed.link);
+            // console.log(typeof item.products);
+            // console.log(item.products[0]);
+            // console.log(Object.values(item.products)[0]);
+            // item.products[0].reviews.forEach(r => console.log(r))
+            // setProductOne(Object.values(item.products)[0]);
+            // console.log(productOne);
+            setProductOne(item.products[0])
+            setProductReviews(item.products[0].reviews)
+            setProductImage(item.products[0].image[0][1])
+        }
+        getProductFromURL();
+
+    },[]);
+    // productOne.reviews.forEach(r=> console.log(r));
     return (
         <div>
-            <h1>Product Details</h1>
-            {{state}.state.product.product.link}
+            {/* { productName } */}
+            {/* { productPassed.link } */}
+            <div className="product_header">
+                <div className="product_image">
+                    <img src={ productImage } alt="" />
+                </div>
+                <div className="product_profile">
+                    <strong>{ productOne.title }</strong><br/>
+                    { productOne.price}
+                </div>
+            </div>
+            <div className="product_info content">
+                {productOne.product_info}
+            </div>
+            <hr/>
+            <div className="product_reviews">
+                <h4 className="product_reviews_title title is-4">Reviews</h4>
+                {/* {productOne.reviews ? console.log("it exists"): console.log("needs to load some more")}
+                {productReviews ? console.log("PR exists"): console.log("PR needs to load some more")} */}
+                {/* {console.log(productOne)} */}
+                {/* {console.log(productReviews)} */}
+                {productReviews.map((r, idx)=> <ProductReview review={r} key={idx} />)}
+   
+            </div>
         </div>
     )
 }
