@@ -4,8 +4,8 @@ const itemSchema = new Schema({
     title: {type: String},
     image: {type: String},
     link: {type: String},
-    price: {type: String},
-    shipping: {type: String},
+    price: {type: Number},
+    shipping: {type: Number},
 }, {
     timestamps: true
 });

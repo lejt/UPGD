@@ -38,7 +38,7 @@ function App() {
     <main className="App">
       {
         <>
-          <NavBar user={user}/>
+          <NavBar user={user} setUser={setUser} cart={cart} />
   
           <Routes>
             <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />

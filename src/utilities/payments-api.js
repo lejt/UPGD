@@ -10,6 +10,7 @@ export function getPayment() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          // pass the whole cart in here as an arr
           items: [
             { id: 1, quantity: 3 },
             { id: 2, quantity: 1 },

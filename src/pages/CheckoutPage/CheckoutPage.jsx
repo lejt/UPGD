@@ -2,12 +2,24 @@ import { useEffect } from 'react';
 import "./CheckoutPage.css"
 import LineItem from "../../components/LineItem/LineItem";
 import * as paymentsAPI from '../../utilities/payments-api';
+import * as ordersAPI from '../../utilities/orders-api';
 
 export default function CheckoutPage({cart, setCart}) {
 
     console.log("CHECKOUT PAGE HERE: ");
     // console.log('item id: '+ cart.lineItems[0]._id);
     // console.log('item title: '+ cart.lineItems[0].item.title);
+
+    // useEffect(function() {
+    //     async function getCart() {
+    //         const cart = await ordersAPI.getCart();
+    //         console.log('received back from orders.api')
+    //         setCart(cart);
+    //     }
+    //     getCart();
+    // }, []);
+
+
     const lineItems = cart.lineItems.map((item, idx) => 
         <LineItem key={idx} item={item} />
     )
@@ -17,8 +29,6 @@ export default function CheckoutPage({cart, setCart}) {
         console.log('Clicked')
         const CARTITEMS = []
         const payment = await paymentsAPI.getPayment();
-        // setCart(cart);
-          
     }
 
 

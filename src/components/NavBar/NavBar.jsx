@@ -2,16 +2,24 @@ import React from "react";
 import "./NavBar.css";
 import { Link } from 'react-router-dom';
 import * as userService from "../../utilities/users-service";
-
+import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
 
-export default function NavBar({user, setUser}) {
+export default function NavBar({user, setUser, cart}) {
 
     function handleLogOut() {
         userService.logOut();
         setUser(null);
     }
 
+    async function handleCheckout(evt) {
+        evt.preventDefault();
+        console.log('Clicked from dropdown')
+        console.log(cart.lineItems)
+        // const payment = await paymentsAPI.getPayment();
+    }
+
+    
     return (
         <nav className="navbar">
             <div className="navbar-brand">
@@ -61,10 +69,32 @@ export default function NavBar({user, setUser}) {
                         </>
                         }
                     </div>
-                    <Link to="/checkout" className="navbar-item">
+                    {/* <Link to="/checkout" className="navbar-item">
                         <ShoppingBasketSharpIcon/>
                         <span className="header_basketCount">0</span>
-                    </Link>
+                    </Link> */}
+                    <div className="navbar-item has-dropdown">
+                            <span className="navbar-link">
+                                <ShoppingBasketSharpIcon/>
+                                <span className="header_basketCount">0</span>
+                            </span>
+                            <div className="navbar-dropdown is-right navbar_checkout_dropdown">
+                                {console.log(cart)}
+
+                                {cart 
+                                ?
+                                // <h1>cart.lineItems.length </h1>
+                                cart.lineItems.map((item,idx)=> <p>{item.item.title} x{item.qty}<br/><br/></p>)
+                                :
+                                <h5>No items added</h5>
+                                }
+
+                                <hr class="navbar-divider"/>
+                                <div className="navbar_checkout_button">
+                                    <button onClick={handleCheckout} className="button is-fullwidth is-warning">Checkout</button>
+                                </div>
+                            </div>    
+                    </div>
                 </div>
             </div>
         </nav>

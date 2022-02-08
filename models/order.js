@@ -4,7 +4,7 @@ const itemSchema = require('./itemSchema');
 
 const lineItemSchema = new Schema({
   item: itemSchema,
-  qty: {type: Number},
+  qty: {type: Number, default: 1},
 }, {
     timestamps: true
 });
@@ -36,22 +36,43 @@ orderSchema.statics.getCart = function(userId) {
   );
 };
 
-orderSchema.methods.addItemToCart = async function(product, productTitle, productPrice, productShipping, productImage, productLink) {
-    // this.lineProducts.push({ product })
+orderSchema.methods.addItemToCart = async function(productTitle, productPrice, productShipping, productImage, productLink) {
+    
     const cart = this;
-    // console.log("model AddToCart data: "+ productTitle, productPrice, productShipping, productImage, produceLink);
 
-    // console.log("test model product: "+product);
+    const lineItem = cart.lineItems.find(lineItem => lineItem.item.title === productTitle)
 
-    const item = {
-      title: productTitle,
-      price: productPrice,
-      shipping: productShipping,
-      image: productImage,
-      link: productLink,
+    if (lineItem) {
+      console.log('Already in cart, so +1 quantity to: '+lineItem);
+      lineItem.qty += 1;
+    } else {
+      // adds whole item to cart if not in cart already
+      function findPeriodIdx(data) {
+        return data.indexOf(".");
+      }
+      // converts price type string to float
+      let periodIdx = findPeriodIdx(productPrice);
+      productPrice = parseFloat(productPrice.slice(2,periodIdx+3));
+  
+      // checks if there is shipping cost and converts to float
+      if (productShipping.includes('$')) {
+        periodIdx = findPeriodIdx(productShipping);
+        productShipping = parseFloat(productShipping.slice(1,periodIdx+3));
+      } else {
+        productShipping = 0;
+      }
+  
+      const item = {
+        title: productTitle,
+        price: productPrice,
+        shipping: productShipping,
+        image: productImage,
+        link: productLink,
+      }
+  
+      cart.lineItems.push({item});
     }
 
-    cart.lineItems.push({item});
     return cart.save();
 }
 

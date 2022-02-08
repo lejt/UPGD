@@ -15,6 +15,16 @@ async function getPayment(req, res) {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             mode: 'payment',
+
+            // req.body should contain:
+            // item.id
+            // item.quantity
+
+            // store item should contain: 
+            // item.item.title, item.item.price (converted to nums)...
+
+            // pass cart to req.body, dont need id
+
             line_items: req.body.items.map(item => {
                 const storeItem = storeItems.get(item.id)
                 return {

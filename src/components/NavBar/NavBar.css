@@ -4,5 +4,8 @@
     border: 1px solid black;
 }
 nav {
-    border: 1px solid red;
+    /* border: 1px solid red; */
+}
+.navbar_checkout_dropdown {
+    width: 25vw;
 }
