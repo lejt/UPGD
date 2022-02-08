@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import "./CheckoutPage.css"
 import LineItem from "../../components/LineItem/LineItem";
+import * as paymentsAPI from '../../utilities/payments-api';
 
 export default function CheckoutPage({cart, setCart}) {
 
@@ -10,11 +11,28 @@ export default function CheckoutPage({cart, setCart}) {
     const lineItems = cart.lineItems.map((item, idx) => 
         <LineItem key={idx} item={item} />
     )
+
+    async function handleSubmit(evt) {
+        evt.preventDefault();
+        console.log('Clicked')
+        const CARTITEMS = []
+        const payment = await paymentsAPI.getPayment();
+        // setCart(cart);
+          
+    }
+
+
+
     // console.log(lineItems)
+    // THIS PAGE ERRORS AFTER REFRESH, MAYBE HAS TO DO WITH USE EFFECT NEEDING TO BE ON THIS PAGE
     return (
         <div className="checkout">
             <aside className="checkout_payment">
                 <h3>Payment Information here</h3>
+                <form action="" method="POST" onSubmit={handleSubmit}>
+
+                    <button type="submit">PAY WITH STRIPE</button>
+                </form>
             </aside>
             <aside className="checkout_cart">
                 <h3>Cart and totals here</h3>
