@@ -5,7 +5,7 @@ import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 
-export default function Product() {
+export default function Product({setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -53,7 +53,7 @@ export default function Product() {
                 <aside className="products">
                     {/* {console.log(products.products)} */}
                     {/* {products.products.forEach(p=>console.log(p.title))} */}
-                    <ProductList products={products}/>
+                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} />
                 </aside>
             </div>
         </div>

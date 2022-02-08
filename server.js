@@ -8,15 +8,7 @@ require('dotenv').config();
 
 // Connect to the database
 require('./config/database');
-
 const app = express();
-// for CORS
-// const cors = require("cors")
-// app.use(
-//   cors({
-//     origin: "*",
-//   })
-// )
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,6 +24,7 @@ app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/orders', require('./routes/api/orders'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
