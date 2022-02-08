@@ -24,12 +24,12 @@ async function addToCart(req, res) {
     // console.log(req.body.product.title)
     const cart = await Order.getCart(req.user._id);
     await cart.addItemToCart(req.body.product, req.body.product.title, req.body.product.price, req.body.product.shipping, req.body.product.image, req.body.product.link);
-
+    // console.log('BACK FROM MODEL TO CONTROLLER: '+cart);
 //   const cart = await Order.getCart(req.user._id);
 //   // The promise resolves to the document, which we already have
 //   // in the cart variable, so no need to create another variable...
 //   await cart.addItemToCart(req.params.id);
-//   res.json(cart);
+    res.json(cart);
 }
 
 // // Updates an item's qty in the cart

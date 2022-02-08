@@ -1,13 +1,13 @@
 const Schema = require('mongoose').Schema;
 
-const productSchema = new Schema({
+const itemSchema = new Schema({
     title: {type: String},
     image: {type: String},
     link: {type: String},
-    price: {type: Number},
+    price: {type: String},
     shipping: {type: String},
 }, {
     timestamps: true
 });
 
-module.exports = productSchema;
+module.exports = itemSchema;

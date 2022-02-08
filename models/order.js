@@ -36,11 +36,22 @@ orderSchema.statics.getCart = function(userId) {
   );
 };
 
-orderSchema.methods.addItemToCart = async function(product, productTitle, productPrice, productShipping, productImage, produceLink) {
+orderSchema.methods.addItemToCart = async function(product, productTitle, productPrice, productShipping, productImage, productLink) {
     // this.lineProducts.push({ product })
     const cart = this;
     // console.log("model AddToCart data: "+ productTitle, productPrice, productShipping, productImage, produceLink);
-    cart.lineItems.push(product);
+
+    // console.log("test model product: "+product);
+
+    const item = {
+      title: productTitle,
+      price: productPrice,
+      shipping: productShipping,
+      image: productImage,
+      link: productLink,
+    }
+
+    cart.lineItems.push({item});
     return cart.save();
 }
 
