@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import "./NavBar.css";
 import { Link } from 'react-router-dom';
 import * as userService from "../../utilities/users-service";
@@ -6,6 +6,7 @@ import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
 
 export default function NavBar({user, setUser, cart}) {
+    const [isDropDownActive, setIsDropDownActive] = useState(false);
 
     function handleLogOut() {
         userService.logOut();
@@ -17,7 +18,9 @@ export default function NavBar({user, setUser, cart}) {
         console.log('Clicked from dropdown')
         const payment = await paymentsAPI.getPayment();
     }
-
+    function toggleCheckoutDropDown(evt) {
+        setIsDropDownActive(!isDropDownActive);
+    }
     
     return (
         <nav className="navbar">
@@ -72,14 +75,14 @@ export default function NavBar({user, setUser, cart}) {
                         <ShoppingBasketSharpIcon/>
                         <span className="header_basketCount">0</span>
                     </Link> */}
-                    <div className="navbar-item has-dropdown">
+                    
+                    <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } onClick={toggleCheckoutDropDown}>
                             <span className="navbar-link">
                                 <ShoppingBasketSharpIcon/>
                                 <span className="header_basketCount">0</span>
                             </span>
-                            <div className="navbar-dropdown is-right navbar_checkout_dropdown">
-                                {console.log(cart)}
-
+                            <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
+                        
                                 {cart 
                                 ?
                                 // <h1>cart.lineItems.length </h1>
