@@ -50,9 +50,17 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
       function findPeriodIdx(data) {
         return data.indexOf(".");
       }
+      let periodIdx;
+      productPrice = (productPrice.replace(',','')).trim();
+      productShipping = productShipping.trim();
+      console.log(productPrice, productShipping);
+
       // converts price type string to float
-      let periodIdx = findPeriodIdx(productPrice);
-      productPrice = parseFloat(productPrice.slice(2,periodIdx+3));
+      periodIdx = findPeriodIdx(productPrice);
+      console.log('Period index from price: '+ productPrice +periodIdx);
+
+      productPrice = parseFloat(productPrice.slice(1,periodIdx+3));
+      console.log('ProductPrice: '+ productPrice);
   
       // checks if there is shipping cost and converts to float
       if (productShipping.includes('$')) {

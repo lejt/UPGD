@@ -15,8 +15,7 @@ export default function NavBar({user, setUser, cart}) {
     async function handleCheckout(evt) {
         evt.preventDefault();
         console.log('Clicked from dropdown')
-        console.log(cart.lineItems)
-        // const payment = await paymentsAPI.getPayment();
+        const payment = await paymentsAPI.getPayment();
     }
 
     

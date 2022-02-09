@@ -1,3 +1,5 @@
+const Order = require('../../models/order');
+
 module.exports = {
     getPayment,
 };
@@ -10,6 +12,9 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 // A cart is the unpaid order for a user
 async function getPayment(req, res) {
     console.log('made it to controller payment')
+    const cart = await Order.getCart(req.user._id);
+ 
+    cart.lineItems.forEach(item=> console.log(item.item.title+": "+item.item.price));
 
     try {
         const session = await stripe.checkout.sessions.create({
@@ -25,21 +30,38 @@ async function getPayment(req, res) {
 
             // pass cart to req.body, dont need id
 
-            line_items: req.body.items.map(item => {
-                const storeItem = storeItems.get(item.id)
+            // line_items: req.body.items.map(item => {
+            //     const storeItem = storeItems.get(item.id)
+            //     return {
+            //         price_data: { 
+            //             currency: 'cad',
+            //             product_data: {
+            //                 name: storeItem.name,
+            //             },
+            //             unit_amount: storeItem.priceInCents
+            //         },
+            //         quantity: item.quantity
+            //     }
+            // }),
+      
+            line_items: cart.lineItems.map(item => {
                 return {
                     price_data: { 
                         currency: 'cad',
                         product_data: {
-                            name: storeItem.name,
+                            name: item.item.title,
                         },
-                        unit_amount: storeItem.priceInCents
+                        unit_amount: item.item.price*100,
                     },
-                    quantity: item.quantity
+                    quantity: item.qty,
                 }
             }),
+
+
+
+
             success_url: `${process.env.CLIENT_URL}/`,
-            cancel_url: `${process.env.CLIENT_URL}/checkout`
+            cancel_url: `${process.env.CLIENT_URL}/`
     })
         res.json({ url: session.url })
     } catch (e) {
