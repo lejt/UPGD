@@ -1,7 +1,7 @@
 // const BASE_URL = 'http://localhost:3000/create-checkout-session';
 import { getToken } from './users-service';
 
-export function getPayment() {
+export async function getPayment() {
     // return sendRequest(`${BASE_URL}`, 'POST', {CARTITEMS});
     console.log('start of fetch')
     const token = getToken();

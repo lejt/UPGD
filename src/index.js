@@ -12,3 +12,21 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+      const $notification = $delete.parentNode;
+  
+      $delete.addEventListener('click', () => {
+        $notification.parentNode.removeChild($notification);
+      });
+
+      const myTimey = setTimeout(turnOffMsg, 2000);
+      function turnOffMsg() {
+        // $notification.parentNode.removeChild($notification);
+        $notification.style.opacity = "0";
+      }
+
+  });
+});
+  

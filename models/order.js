@@ -6,10 +6,15 @@ const lineItemSchema = new Schema({
   item: itemSchema,
   qty: {type: Number, default: 1},
 }, {
-    timestamps: true
+    timestamps: true,
+    toJSON: { virtuals: true }
 });
 
-
+lineItemSchema.virtual('extPrice').get(function() {
+  // 'this' refers to the lineItem subdocument
+  return (this.qty*this.item.price)
+  // return this.qty * this.item.price;
+});
 
 const orderSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -18,6 +23,16 @@ const orderSchema = new Schema({
   }, {
     timestamps: true,
     toJSON: { virtuals: true }
+});
+
+
+orderSchema.virtual('orderTotal').get(function() {
+  // 'this' refers to the order document
+  return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
+});
+
+orderSchema.virtual('totalQty').get(function() {
+  return this.lineItems.reduce((total, item) => total + item.qty, 0);
 });
 
 // statics are methods callable on the Model

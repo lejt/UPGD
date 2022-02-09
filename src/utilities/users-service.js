@@ -7,7 +7,7 @@ export async function signUp(userData) {
       localStorage.setItem('token', token);
       return getUser();
     } catch {
-  
+      throw new Error('Invalid Sign Up');
     }
   }
 
@@ -37,9 +37,13 @@ export function logOut() {
 }
 
 export async function login(credentials) {
-  const token = await usersAPI.login(credentials);
-  localStorage.setItem('token', token);
-  return getUser();
+  try {
+    const token = await usersAPI.login(credentials);
+    localStorage.setItem('token', token);
+    return getUser();
+  } catch {
+    throw new Error('Bad Credentials');
+  }
 }
 
 export async function checkToken() {

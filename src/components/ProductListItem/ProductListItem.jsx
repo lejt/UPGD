@@ -1,7 +1,7 @@
 import "./ProductListItem.css";
 import { Link } from "react-router-dom";
 
-export default function ProductListItem({product, handleAddToOrder}) {
+export default function ProductListItem({product, handleAddToOrder, handleAddMessage, handleHideAddMessage}) {
     return (
         <div className="product_list_item">
             <Link 
@@ -17,7 +17,11 @@ export default function ProductListItem({product, handleAddToOrder}) {
             <div className="product_addToCart">
                 <button 
                     className="button is-warning"
-                    onClick={()=> handleAddToOrder(product)}
+                    onClick={()=> {
+                        handleAddToOrder(product)
+                        handleAddMessage()
+                        handleHideAddMessage()
+                    }}
                 >
                 Add
                 </button>

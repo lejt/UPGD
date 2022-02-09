@@ -1,0 +1,24 @@
+.navbar_checkout_dropdown_items {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+.navbar_checkout_dropdown_imgntitle {
+    display: flex;
+    /* border: 1px solid orange; */
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar_checkout_dropdown_img {
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 20%;
+}
+.navbar_checkout_dropdown_title {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 80%;
+}
+.navbar_checkout_dropdown_pricenqty {
+    display: flex;
+    justify-content: space-between;
+}

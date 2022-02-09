@@ -1,32 +1,46 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect }  from "react";
 import "./NavBar.css";
 import { Link } from 'react-router-dom';
 import * as userService from "../../utilities/users-service";
+import * as ordersAPI from "../../utilities/orders-api";
 import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
+import NavCheckout from "../../components/NavCheckout/NavCheckout";
 
-export default function NavBar({user, setUser, cart}) {
+export default function NavBar({user, setUser, cart, setCart}) {
     const [isDropDownActive, setIsDropDownActive] = useState(false);
 
+    // cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
+    // const cartItems =  cart.lineItems.map(item => 
+    //     <NavCheckout 
+    //         item={item}
+    //     />
+    // );
+    if (!cart) return null;
+    
     function handleLogOut() {
         userService.logOut();
         setUser(null);
     }
-
-    async function handleCheckout(evt) {
-        evt.preventDefault();
-        console.log('Clicked from dropdown')
-        const payment = await paymentsAPI.getPayment();
-    }
     function toggleCheckoutDropDown(evt) {
         setIsDropDownActive(!isDropDownActive);
+    }
+    async function handleCheckout(evt) {
+        evt.preventDefault();
+        if (cart.lineItems.length) {
+            await paymentsAPI.getPayment();
+        }
     }
     
     return (
         <nav className="navbar">
             <div className="navbar-brand">
                 {/* <Link to="/"><img src="" width="112" height="28" /></Link> */}
-                <Link to="/"><h1 className="title logoName">UPGD</h1></Link>
+                <Link to="/">
+                    <div className="navbar-item">
+                        <h1 className="title is-3">UPGD</h1>
+                    </div>
+                </Link>
             </div>
             <div className="navbar-menu">
                 <div className="navbar-end">
@@ -71,10 +85,6 @@ export default function NavBar({user, setUser, cart}) {
                         </>
                         }
                     </div>
-                    {/* <Link to="/checkout" className="navbar-item">
-                        <ShoppingBasketSharpIcon/>
-                        <span className="header_basketCount">0</span>
-                    </Link> */}
                     
                     <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } onClick={toggleCheckoutDropDown}>
                             <span className="navbar-link">
@@ -82,18 +92,22 @@ export default function NavBar({user, setUser, cart}) {
                                 <span className="header_basketCount">0</span>
                             </span>
                             <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
-                        
-                                {cart 
+                                
+                                {cart.lineItems.length
+                                // {cart
                                 ?
-                                // <h1>cart.lineItems.length </h1>
-                                cart.lineItems.map((item,idx)=> <p>{item.item.title} x{item.qty}<br/><br/></p>)
+                                // <h1>there are cart items</h1>
+                                // cartItems
+                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
                                 :
-                                <h5>No items added</h5>
+                                <h5 className="title is-6 is-flex is-justify-content-center"><br/>- No Items Added Yet -</h5>
                                 }
 
-                                <hr class="navbar-divider"/>
+                                <hr className="navbar-divider"/>
+                                {/* <h2>TOTAL QTY: {cart.totalQty}</h2> */}
+                                {/* <h2>SUBTOTAL: {cart.orderTotal}</h2> */}
                                 <div className="navbar_checkout_button">
-                                    <button onClick={handleCheckout} className="button is-fullwidth is-warning">Checkout</button>
+                                    <button onClick={handleCheckout} className="button is-fullwidth is-warning title is-6">Checkout</button>
                                 </div>
                             </div>    
                     </div>

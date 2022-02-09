@@ -36,3 +36,27 @@
 .products {
     /* border: 2px solid green; */
 }
+.add_notification {
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 5;
+    opacity: 0;
+}
+.alert-shown {
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 1;
+    transition: all 250ms linear 0.2s; 
+}
+.alert-hidden {
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 0;
+    transition: all 250ms linear 1s; 
+}

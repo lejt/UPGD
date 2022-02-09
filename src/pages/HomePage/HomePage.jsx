@@ -9,7 +9,7 @@ export default function HomePage() {
                 alt=""
                 className="home_banner" 
                 />
-                
+                <p>HI I AM THE HOME PAGE</p>
             </div>
         </div>
     )
