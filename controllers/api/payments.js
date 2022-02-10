@@ -30,9 +30,13 @@ async function getPayment(req, res) {
                     quantity: item.qty,
                 }
             }),
+            // for localhost testing
+            // success_url: `${process.env.CLIENT_URL}/`,
+            // cancel_url: `${process.env.CLIENT_URL}/`
 
-            success_url: `${process.env.CLIENT_URL}/`,
-            cancel_url: `${process.env.CLIENT_URL}/`
+            // for deployment 
+            success_url: `https://u-p-g-d.herokuapp.com/`,
+            cancel_url: `https://u-p-g-d.herokuapp.com/`
     })
         res.json({ url: session.url })
     } catch (e) {
