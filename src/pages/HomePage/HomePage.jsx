@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import "./HomePage.css";
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function HomePage({ setCart }) {
+export default function HomePage({ user, setCart }) {
 
     useEffect(function() {
-        // if (!cart) return null;
-        async function getCart() {
-            console.log("running useEffect getCart")
-            const cart = await ordersAPI.getCart();
-            setCart(cart);
-        }
-        getCart();
+        if (user) {
+            async function getCart() {
+                console.log("running useEffect getCart")
+                const cart = await ordersAPI.getCart();
+                setCart(cart);
+            }
+            getCart();
+        };
     },[]);
 
     return (

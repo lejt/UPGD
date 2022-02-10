@@ -43,7 +43,7 @@ function App() {
             <Route path="/products" element={<ProductPage cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/:productName" element={<ProductDetailPage />} />
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
-            <Route path="/*" element={<HomePage setCart={setCart} />} />
+            <Route path="/*" element={<HomePage user={user} setCart={setCart} />} />
           </Routes>
         </>
       }
