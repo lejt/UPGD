@@ -4,7 +4,7 @@ const Order = require('../../models/order');
 module.exports = {
   cart,
   addToCart,
-//   setItemQtyInCart,
+  setItemQtyInCart,
 //   checkout,
 //   history
 };
@@ -31,12 +31,15 @@ async function addToCart(req, res) {
     res.json(cart);
 }
 
-// // Updates an item's qty in the cart
-// async function setItemQtyInCart(req, res) {
-//   const cart = await Order.getCart(req.user._id);
-//   await cart.setItemQty(req.body.itemId, req.body.newQty);
-//   res.json(cart);
-// }
+// Updates an item's qty in the cart
+async function setItemQtyInCart(req, res) {
+  console.log('HEYO');
+  console.log('controller for setItemqtyincart arrived');
+  const cart = await Order.getCart(req.user._id);
+
+  await cart.setItemQty(req.body.itemId, req.body.newQty);
+  res.json(cart);
+}
 
 // // Update the cart's isPaid property to true
 // async function checkout(req, res) {

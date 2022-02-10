@@ -19,6 +19,13 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
             setProducts(Object.values(items.products));
         }
         getProducts();
+
+        async function getCart() {
+            const cart = await ordersAPI.getCart();
+            setCart(cart);
+            // updateCart(cart);
+        }
+        getCart();
     },[]);
 
     // useEffect(function() {

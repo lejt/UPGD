@@ -1,6 +1,6 @@
 import "./NavCheckout.css";
 
-export default function NavCheckout({item}) {
+export default function NavCheckout({item, handleChangeQty}) {
     return (
         <div className="navbar_checkout_dropdown_items">
             <div className="navbar_checkout_dropdown_imgntitle">
@@ -13,7 +13,10 @@ export default function NavCheckout({item}) {
             </div>
             <div className="navbar_checkout_dropdown_pricenqty">
                 <div>
+                    {/* <button onClick={()=> handleChangeQty(item._id, item.qty - 1)}>-</button> */}
                     Qty: {item.qty}
+                    {/* <button onClick={()=> handleChangeQty(item._id, item.qty + 1)}>+</button> */}
+                    
                 </div>
                 <div>
                     {/* {console.log('EXTPRICE: '+item.item.extPrice)} */}

@@ -18,38 +18,22 @@ function App() {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState(null);
 
-  // useEffect(function() {
-  //   // if (!cart) return null;
-  //   async function getCart() {
-  //       const cart = await ordersAPI.getCart();
-  //       setCart(cart);
-  //       // updateCart(cart);
-  //   }
-  //   getCart();
-  // }, []);
-
-  useEffect(function() {
-    // if (!cart) return null;
-    async function getCart() {
-        const cart = await ordersAPI.getCart();
-        setCart(cart);
-        // updateCart(cart);
-    }
-    getCart();
-  },[]);
-
   async function handleAddToOrder(product) {
     const cart = await ordersAPI.addItemToCart(product);
     setCart(cart);
   }
 
-
+  async function handleChangeQty(itemId, newQty) {
+    console.log('handlechangeqty clicked: '+ itemId, newQty)
+    const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
+    setCart(updatedCart);
+  }
 
   return (
     <main className="App">
       {
         <>
-          <NavBar user={user} setUser={setUser} cart={cart} setCart={setCart} />
+          <NavBar user={user} setUser={setUser} cart={cart} setCart={setCart} handleChangeQty={handleChangeQty} />
           {/* <NavBar /> */}
 
           <Routes>
@@ -59,7 +43,7 @@ function App() {
             <Route path="/products" element={<ProductPage cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/:productName" element={<ProductDetailPage />} />
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
-            <Route path="/*" element={<HomePage />} />
+            <Route path="/*" element={<HomePage setCart={setCart} />} />
           </Routes>
         </>
       }

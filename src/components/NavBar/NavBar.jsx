@@ -7,16 +7,19 @@ import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
 import NavCheckout from "../../components/NavCheckout/NavCheckout";
 
-export default function NavBar({user, setUser, cart, setCart}) {
+export default function NavBar({user, setUser, cart, setCart, handleChangeQty}) {
     const [isDropDownActive, setIsDropDownActive] = useState(false);
 
     // cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
+    
+    // console.log(cart)
+    // if (!cart) return null;
     // const cartItems =  cart.lineItems.map(item => 
     //     <NavCheckout 
     //         item={item}
     //     />
     // );
-    if (!cart) return null;
+
     
     function handleLogOut() {
         userService.logOut();
@@ -25,8 +28,7 @@ export default function NavBar({user, setUser, cart, setCart}) {
     function toggleCheckoutDropDown(evt) {
         setIsDropDownActive(!isDropDownActive);
     }
-    async function handleCheckout(evt) {
-        evt.preventDefault();
+    async function handleCheckout() {
         if (cart.lineItems.length) {
             await paymentsAPI.getPayment();
         }
@@ -56,7 +58,7 @@ export default function NavBar({user, setUser, cart, setCart}) {
 
                     <div className="navbar-item has-dropdown is-hoverable">
                         {user ?
-                        <>
+                        <div>
                             <span className="navbar-link">
                                 Hello, {user.name}
                             </span>
@@ -68,9 +70,9 @@ export default function NavBar({user, setUser, cart, setCart}) {
                                     Log Out
                                 </Link>
                             </div>    
-                        </>
+                        </div>
                         :
-                        <>
+                        <div>
                             <span className="navbar-link">
                                 Login/Sign Up
                             </span>
@@ -82,7 +84,7 @@ export default function NavBar({user, setUser, cart, setCart}) {
                                     Sign Up
                                 </Link>
                             </div>    
-                        </>
+                        </div>
                         }
                     </div>
                     
@@ -93,12 +95,12 @@ export default function NavBar({user, setUser, cart, setCart}) {
                             </span>
                             <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
                                 
-                                {cart.lineItems.length
+                                {cart && cart.lineItems.length
                                 // {cart
                                 ?
                                 // <h1>there are cart items</h1>
                                 // cartItems
-                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
+                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} handleChangeQty={handleChangeQty} />)
                                 :
                                 <h5 className="title is-6 is-flex is-justify-content-center"><br/>- No Items Added Yet -</h5>
                                 }
