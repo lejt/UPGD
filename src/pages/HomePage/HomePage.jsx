@@ -12,7 +12,7 @@ export default function HomePage({ user, setCart }) {
                 setCart(cart);
             }
             getCart();
-        };
+        } else return null;
     },[]);
 
     return (

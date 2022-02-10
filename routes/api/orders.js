@@ -9,6 +9,8 @@ router.post('/cart/items', ordersCtrl.addToCart);
 // router.post('/cart/items/:product', ordersCtrl.addToCart);
 
 // POST /api/orders/cart/qty
-// router.put('/cart/qty', ordersCtrl.setItemQtyInCart);
+router.put('/cart/qty', ordersCtrl.setItemQtyInCart);
+// POST /api/orders/cart/item/:id
+router.delete('/cart/item/:id', ordersCtrl.deleteItemInCart);
 
 module.exports = router;

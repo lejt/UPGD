@@ -32,11 +32,17 @@ function App() {
     setCart(updatedCart);
   }
 
+  async function handleDeleteItem(itemId) {
+    console.log('handleDeleteItem clicked: '+ itemId)
+    const updatedCart = await ordersAPI.deleteItemInCart(itemId);
+    setCart(updatedCart);
+  }
+
   return (
     <main className="App">
       {
         <>
-          <NavBar user={user} setUser={setUser} cart={cart} setCart={setCart} handleChangeQty={handleChangeQty} />
+          <NavBar user={user} setUser={setUser} cart={cart} setCart={setCart} handleChangeQty={handleChangeQty} handleDeleteItem={handleDeleteItem} />
           {/* <NavBar /> */}
 
           <Routes>

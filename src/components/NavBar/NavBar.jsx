@@ -7,7 +7,7 @@ import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
 import NavCheckout from "../../components/NavCheckout/NavCheckout";
 
-export default function NavBar({user, setUser, cart, setCart, handleChangeQty}) {
+export default function NavBar({user, setUser, cart, setCart, handleChangeQty, handleDeleteItem}) {
     const [isDropDownActive, setIsDropDownActive] = useState(false);
 
     // cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
@@ -87,8 +87,8 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty}) 
                         }
                     </div>
                     
-                    <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } onClick={toggleCheckoutDropDown}>
-                            <span className="navbar-link">
+                    <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } >
+                            <span className="navbar-link" onClick={toggleCheckoutDropDown}>
                                 <ShoppingBasketSharpIcon/>
                                 <span className="header_basketCount">0</span>
                             </span>
@@ -99,14 +99,16 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty}) 
                                 ?
                                 // <h1>there are cart items</h1>
                                 // cartItems
-                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} handleChangeQty={handleChangeQty} />)
+                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} handleChangeQty={handleChangeQty} handleDeleteItem={handleDeleteItem} />)
                                 :
                                 <h5 className="title is-6 is-flex is-justify-content-center"><br/>- No Items Added Yet -</h5>
                                 }
-
+                                
                                 <hr className="navbar-divider"/>
-                                {/* <h2>TOTAL QTY: {cart.totalQty}</h2> */}
-                                {/* <h2>SUBTOTAL: {cart.orderTotal}</h2> */}
+                      
+                                {/* <h2>TOTAL QTY: {cart.totalQty}</h2>
+                                <h2>SUBTOTAL: ${cart.orderTotal.toFixed(2)}</h2> */}
+
                                 <div className="navbar_checkout_button">
                                     <button onClick={handleCheckout} className="button is-fullwidth is-warning title is-6">Checkout</button>
                                 </div>

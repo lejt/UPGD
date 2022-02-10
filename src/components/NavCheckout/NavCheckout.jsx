@@ -1,6 +1,6 @@
 import "./NavCheckout.css";
 
-export default function NavCheckout({item, handleChangeQty}) {
+export default function NavCheckout({item, handleChangeQty, handleDeleteItem}) {
     return (
         <div className="navbar_checkout_dropdown_items">
             <div className="navbar_checkout_dropdown_imgntitle">
@@ -14,7 +14,26 @@ export default function NavCheckout({item, handleChangeQty}) {
             <div className="navbar_checkout_dropdown_pricenqty">
                 <div>
                     {/* <button onClick={()=> handleChangeQty(item._id, item.qty - 1)}>-</button> */}
-                    Qty: {item.qty}
+                    Qty: 
+                    {/* {item.qty}
+                    <input 
+                        disabled
+                        type="number" 
+                        name="itemQty" 
+                        value={item.qty} 
+                        onChange={()=> {
+
+                            handleChangeQty(item._id, item.qty + 1)
+                        
+                        }} 
+                    /> */}
+                    <select value={item.qty} onChange={(evt)=> handleChangeQty(item._id, evt.target.value)} >
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
                     {/* <button onClick={()=> handleChangeQty(item._id, item.qty + 1)}>+</button> */}
                     
                 </div>
@@ -24,6 +43,9 @@ export default function NavCheckout({item, handleChangeQty}) {
                     {/* ${item.item.price.toFixed(2)}<br/> */}
                     ${item.extPrice.toFixed(2)}
                 </div>
+            </div>
+            <div>
+                <button className="button is-danger is-inverted" onClick={()=> handleDeleteItem(item._id)}>Remove Item</button>
             </div>
         </div>
     )

@@ -101,12 +101,24 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
 
 orderSchema.methods.setItemQty = function(itemId, newQty) {
   const cart = this;
-  const lineItem = cart.lineItems.find(lineItem => lineItem.item._id.equals(itemId));
+  
+  const lineItem = cart.lineItems.find(lineItem => lineItem._id.equals(itemId));
+  // console.log(lineItem)
+
   if (lineItem && newQty <= 0) {
-    lineItem.item.remove();
+    lineItem.remove();
   } else if (lineItem) {
     lineItem.qty = newQty;
   }
+  return cart.save();
+}
+
+orderSchema.methods.deleteItem = function(itemId) {
+  const cart = this;
+  const lineItem = cart.lineItems.find(lineItem => lineItem._id.equals(itemId));
+  lineItem.remove();
+  // console.log(lineItem)
+
   return cart.save();
 }
 

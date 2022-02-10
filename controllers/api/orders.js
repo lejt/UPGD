@@ -5,6 +5,7 @@ module.exports = {
   cart,
   addToCart,
   setItemQtyInCart,
+  deleteItemInCart,
 //   checkout,
 //   history
 };
@@ -20,7 +21,7 @@ async function cart(req, res) {
 // Add an item to the cart
 async function addToCart(req, res) {
     console.log('add to cart CONTROLLER HERE: ')
-    console.log(req.body.product)
+    // console.log(req.body.product)
     const cart = await Order.getCart(req.user._id);
     // await cart.addItemToCart(req.body.product.title, req.body.product.price, req.body.product.image, req.body.product.link);
     await cart.addItemToCart(req.body.product.title, req.body.product.price, req.body.product.shipping, req.body.product.image, req.body.product.link);
@@ -41,6 +42,15 @@ async function setItemQtyInCart(req, res) {
   await cart.setItemQty(req.body.itemId, req.body.newQty);
   res.json(cart);
 }
+
+async function deleteItemInCart(req, res) {
+  console.log('controller for DELETEItemqtyincart arrived');
+  const cart = await Order.getCart(req.user._id);
+
+  await cart.deleteItem(req.body.itemId);
+  res.json(cart);
+}
+
 
 // // Update the cart's isPaid property to true
 // async function checkout(req, res) {

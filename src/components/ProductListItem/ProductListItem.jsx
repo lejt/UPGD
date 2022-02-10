@@ -9,13 +9,13 @@ export default function ProductListItem({product, handleAddToOrder, handleAddMes
                 state={{ dataToDetail: product }}
             >
                 <div className="product_card">
-                    {product.title}<br/>
-                    {product.price}<br/>
                     <img src={product.image} alt="" />
+                    {product.title}<br/><br/>
+                    {product.price}<br/>
                 </div>
             </Link>
             <div className="product_addToCart">
-                <button 
+                {/* <button 
                     className="button is-warning"
                     onClick={()=> {
                         handleAddToOrder(product)
@@ -23,7 +23,7 @@ export default function ProductListItem({product, handleAddToOrder, handleAddMes
                     }}
                 >
                 Add
-                </button>
+                </button> */}
             </div>
         </div>
     )
