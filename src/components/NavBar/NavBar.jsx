@@ -37,7 +37,6 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty}) 
     return (
         <nav className="navbar">
             <div className="navbar-brand">
-                {/* <Link to="/"><img src="" width="112" height="28" /></Link> */}
                 <Link to="/">
                     <div className="navbar-item">
                         <h1 className="title is-3">UPGD</h1>

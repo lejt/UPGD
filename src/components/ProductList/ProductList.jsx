@@ -1,7 +1,7 @@
 import "./ProductList.css";
 import ProductListItem from "../ProductListItem/ProductListItem";
 
-export default function ProductList({products, setCart, handleAddToOrder, handleAddMessage, handleHideAddMessage}) {
+export default function ProductList({products, setCart, handleAddToOrder, handleAddMessage}) {
 
     return (
         <div className="products_grid">
@@ -10,7 +10,6 @@ export default function ProductList({products, setCart, handleAddToOrder, handle
                                         key={idx} 
                                         handleAddToOrder={handleAddToOrder}
                                         handleAddMessage={handleAddMessage}
-                                        handleHideAddMessage={handleHideAddMessage}
                                     />
             )}
         </div>

@@ -19,14 +19,13 @@ async function getPayment(req, res) {
             mode: 'payment',
       
             line_items: cart.lineItems.map(item => {
-                console.log(typeof parseInt(item.item.price*100).toFixed(2))
                 return {
                     price_data: { 
-                        currency: 'cad',
+                        currency: 'usd',
                         product_data: {
                             name: item.item.title,
                         },
-                        unit_amount: parseInt(((item.item.price)*100).toFixed(2)),
+                        unit_amount: parseFloat(((item.item.price)*100).toFixed(2)),
                     },
                     quantity: item.qty,
                 }

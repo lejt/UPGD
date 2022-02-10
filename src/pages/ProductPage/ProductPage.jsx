@@ -4,6 +4,7 @@ import * as ordersAPI from "../../utilities/orders-api";
 import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 
 export default function ProductPage({cart, setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
@@ -26,7 +27,23 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
             // updateCart(cart);
         }
         getCart();
+
+        
     },[]);
+
+    useEffect(function() {
+        setTimeout(()=> {
+            setAddMsg(false);
+            console.log('UseEF SETTIME: '+addMsg)
+        }, 1000);
+    }, [addMsg]);    
+
+
+    // useEffect(()=> {
+    //     setTimeout(()=> {
+    //         setVisible(false);
+    //     }, props.delay);
+    // }, [props.delay]);
 
     // useEffect(function() {
     //     // if (!cart) return null;
@@ -37,7 +54,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
     //     }
     //     getCart();
     // });
-
+    
     function handleChange(evt) {
         setSearchQuery(evt.target.value);
     }
@@ -48,27 +65,28 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
     }
 
     function handleAddMessage() {
-        // setAddMsg(!addMsg)
-        // console.log(addMsg)
-
+        console.log('CLICK, before first change'+addMsg)
+        setAddMsg(!addMsg)
+        // setTimeout(handleHideAddMessage,3000)
+        // handleHideAddMessage()
     }
-    function handleHideAddMessage() {
-        
-    }
+    console.log('after CLICK'+addMsg)
 
     return (
         <div className="products">
 
             {/* popup message when add button clicked */}
-            {/* <div className={`notification is-success ${addMsg ? 'alert-shown' : 'alert-hidden'}` }>
-                    <div className="notification_msg">
-                        Successfully added item to cart.
-                    </div>
-            </div> */}
-            <div className="notification is-success">
+            {/* <div className={`notification is-success `}>
                 <button className="delete"></button>
                 Lorem ipsum
-            </div>
+            </div> */}
+            {console.log('just before msg'+addMsg)}
+            {addMsg ?
+            <ExpireMsg delay="2000">Successfully added item to cart</ExpireMsg>
+            :
+            null
+            }
+            
 
             <div className="products_banner">
                 <h1>All Products</h1>
@@ -91,7 +109,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
                 <aside className="products">
                     {/* {console.log(products.products)} */}
                     {/* {products.products.forEach(p=>console.log(p.title))} */}
-                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} handleAddMessage={handleAddMessage} handleHideAddMessage={handleHideAddMessage} />
+                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} handleAddMessage={handleAddMessage} />
                 </aside>
             </div>
         </div>
