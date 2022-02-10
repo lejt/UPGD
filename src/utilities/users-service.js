@@ -2,7 +2,9 @@ import * as usersAPI from './users-api';
 
 export async function signUp(userData) {
     try {
+      console.log('user-services landed before usersapi');
       const token = await usersAPI.signUp(userData);
+      console.log('user-services landed after usersapi');
       // Save the token to localStorage
       localStorage.setItem('token', token);
       return getUser();
