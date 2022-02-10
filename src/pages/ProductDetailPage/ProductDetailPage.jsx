@@ -2,10 +2,10 @@ import "./ProductDetailPage.css";
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from "react-router-dom";
 import * as itemsAPI from '../../utilities/items-api';
-import * as productAPI from '../../utilities/product-api';
+import * as ordersAPI from '../../utilities/orders-api';
 import ProductReview from '../../components/ProductReview/ProductReview';
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
     const [productOne, setProductOne] = useState([]);
     const [productReviews, setProductReviews] = useState([]);
     const [productImage, setProductImage] = useState("");
@@ -31,6 +31,15 @@ export default function ProductDetailPage() {
         }
         getProductFromURL();
 
+        if (user) {
+            async function getCart() {
+                console.log("running useEffect getCart")
+                const cart = await ordersAPI.getCart();
+                setCart(cart);
+            }
+            getCart();
+        };
+
     },[]);
     // productOne.reviews.forEach(r=> console.log(r));
     return (
@@ -44,6 +53,11 @@ export default function ProductDetailPage() {
                 <div className="product_profile">
                     <strong>{ productOne.title }</strong><br/>
                     { productOne.price}
+                    <br/>
+                    <br/>
+                    <button onClick={()=> {handleAddToOrder(productOne)}}>
+                    Add to Cart
+                    </button>
                 </div>
             </div>
             <hr/>

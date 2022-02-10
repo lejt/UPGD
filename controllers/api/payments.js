@@ -33,8 +33,8 @@ async function getPayment(req, res) {
                 }
             }),
             // for localhost testing
-            // success_url: `${process.env.CLIENT_URL}/`,
-            // cancel_url: `${process.env.CLIENT_URL}/`
+            // success_url: `http://localhost:3000/`,
+            // cancel_url: `http://localhost:3000/`
 
             // for deployment 
             success_url: `https://u-p-g-d.herokuapp.com/`,
