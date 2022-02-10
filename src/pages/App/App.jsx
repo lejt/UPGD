@@ -19,8 +19,11 @@ function App() {
   const [cart, setCart] = useState(null);
 
   async function handleAddToOrder(product) {
+    console.log('Before handleAddToOrder')
+    console.log(product.title, product.price);
     const cart = await ordersAPI.addItemToCart(product);
     setCart(cart);
+    console.log('After handleAddToOrder success')
   }
 
   async function handleChangeQty(itemId, newQty) {

@@ -38,9 +38,10 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
                 setCart(cart);
             }
             getCart();
-        };
+        }
 
     },[]);
+
     // productOne.reviews.forEach(r=> console.log(r));
     return (
         <div>
@@ -55,7 +56,7 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
                     { productOne.price}
                     <br/>
                     <br/>
-                    <button onClick={()=> {handleAddToOrder(productOne)}}>
+                    <button onClick={()=> {handleAddToOrder(productPassed)}}>
                     Add to Cart
                     </button>
                 </div>

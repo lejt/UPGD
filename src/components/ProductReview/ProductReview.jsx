@@ -13,7 +13,7 @@ export default function ProductReview({review}) {
                         {/* {(review.reviews[review.reviews.length-1][0]).includes('\n')? console.log("yes") : console.log("no")} */}
                         {review.reviews[review.reviews.length-1][0] 
                         ?
-                        review.reviews[review.reviews.length-1][0].split('\n').map((r,idx)=> <p>{r}</p>)
+                        review.reviews[review.reviews.length-1][0].split('\n').map((r, idx)=> <p key={idx}>{r}</p>)
                         :
                         <p>-</p>
                         }

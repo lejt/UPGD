@@ -12,7 +12,7 @@ export function getCart() {
 export function addItemToCart(product) {
     // Just send itemId for best security (no pricing)
     // SENDING WHOLE OBJ HERE, including pricing, which is not the best practice
-    // console.log('orders api addToCart here' + product.price);
+    console.log('orders api addToCart here' + product.title, product.price);
     // const stringifiedProduct = JSON.stringify(product);
     return sendRequest(`${BASE_URL}/cart/items`, 'POST', {product});
     // return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');

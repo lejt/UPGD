@@ -20,8 +20,9 @@ async function cart(req, res) {
 // Add an item to the cart
 async function addToCart(req, res) {
     console.log('add to cart CONTROLLER HERE: ')
-    // console.log(req.body.product.title)
+    console.log(req.body.product)
     const cart = await Order.getCart(req.user._id);
+    // await cart.addItemToCart(req.body.product.title, req.body.product.price, req.body.product.image, req.body.product.link);
     await cart.addItemToCart(req.body.product.title, req.body.product.price, req.body.product.shipping, req.body.product.image, req.body.product.link);
     // console.log('BACK FROM MODEL TO CONTROLLER: '+cart);
 //   const cart = await Order.getCart(req.user._id);
