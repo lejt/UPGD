@@ -2,24 +2,20 @@ import './PaymentCompleteItems.css';
 
 export default function PaymentCompleteItems({items}) {
     return (
-        <div>
-            <h1>hi</h1>
-            {items.item.title}
-            <p>Order Quantity: x{items.qty}</p>
-            {items.item.price}
-            
-            {/* {items.qty} */}
-            {/* items map item.title item.price */}
-            {/* {items.map(item => {
-                return (
-                    <>
-                        <p>{item.item.title}</p>
-                        <p>{item.item.price}</p>
-                    </>
-                )
-                })
-            } */}
-            
-        </div>
+            <div className="receipt_item">
+                <div className="receipt_imgntitle">
+                    <div className="receipt_left_image">
+                        <img src={items.item.image} alt="" className="receipt_image" />
+                    </div>
+                    <div className="receipt_left_info">
+                        <p>{items.item.title}</p>
+                        <p>x{items.qty}</p>
+                    </div>
+                </div>
+                <div className="receipt_unit_price">
+                    <p>${items.item.price.toFixed(2)}</p>
+                </div>    
+            </div>
+      
     )
 }

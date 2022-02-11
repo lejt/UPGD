@@ -1,0 +1,25 @@
+.card {
+    width: 50%;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+.card_content {
+    border: 1px dotted red;
+}
+.payment_msg {
+    text-align: center;
+    margin-top: 30px;
+}
+.payment_total {
+    text-align: end;
+    padding: 0 30px;
+}
+.payment_check_icon {
+    width: 100px;
+    display: block;
+    margin: 40px auto 0;
+}
+

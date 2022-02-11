@@ -1,0 +1,24 @@
+.footer {
+    background-color: black;
+    width: 100%;
+    margin-top: 100px;
+}
+.footer p {
+    color: white;
+}
+.footer a {
+    color: rgb(255, 162, 0);
+}
+.col_content {
+    color: rgb(169, 169, 169);
+}
+.col_content h4 {
+    color: white;
+}
+.col_content ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+.footer hr {
+    background-color: rgb(125, 79, 11);
+}

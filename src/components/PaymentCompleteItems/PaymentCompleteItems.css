@@ -1,0 +1,25 @@
+.receipt_imgntitle {
+    display: flex;
+    width: 70%;
+}
+.receipt_item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px dashed gray;
+}
+.receipt_unit_price {
+    text-align: end;
+    padding-top: 20px;
+}
+.receipt_left_image {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.receipt_image {
+    padding: 10px 0;
+}
+.receipt_left_info {
+    padding: 20px 10px;
+    width: 70%;
+}

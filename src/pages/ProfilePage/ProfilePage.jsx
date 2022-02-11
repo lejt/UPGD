@@ -18,12 +18,18 @@ export default function ProfilePage({user, orders, setOrders}) {
 
     return (
         <div>
-            <p>
-                {user.name}<br/>
-                {user.email}
-            </p>
+            <div className="profile_header">
+                <div className="profile_info">
+                    <p className="subtitle is-3"><strong>{user.name}'s Page</strong></p>
+                </div>
+                <div className="profile_info">
+                    <p>Email: {user.email}</p>
+                </div>
+            </div>
+
             <hr/>
-            <h4>Order History</h4>
+
+            <h4 className="profile_orders title is-4">Order History</h4>
             {orders.map((order,idx)=>console.log(order))}
             {orders.map((order,idx)=> <OrderHistoryList key={idx} order={order} />)}
         </div>

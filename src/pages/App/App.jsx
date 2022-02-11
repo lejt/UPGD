@@ -12,7 +12,7 @@ import CheckoutPage from "../CheckoutPage/CheckoutPage";
 import ProductPage from "../ProductPage/ProductPage";
 import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
 import PaymentCompletePage from "../PaymentCompletePage/PaymentCompletePage";
-
+import Footer from "../../components/Footer/Footer";
 import * as ordersAPI from '../../utilities/orders-api';
 
 function App() {
@@ -44,10 +44,9 @@ function App() {
   return (
     <main className="App">
       {
-        <>
+        <div className="page_container">
           <NavBar user={user} setUser={setUser} cart={cart} setCart={setCart} handleChangeQty={handleChangeQty} handleDeleteItem={handleDeleteItem} />
-          {/* <NavBar /> */}
-
+          
           <Routes>
             <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />
             <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
@@ -58,7 +57,10 @@ function App() {
             <Route path="/checkout/completed" element={<PaymentCompletePage user={user} orders={orders} setOrders={setOrders} />} />
             <Route path="/*" element={<HomePage user={user} setCart={setCart} />} />
           </Routes>
-        </>
+
+          <Footer />
+         
+        </div>
       }
     </main>
   );

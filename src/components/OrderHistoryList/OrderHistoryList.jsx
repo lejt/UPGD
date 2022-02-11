@@ -32,7 +32,7 @@ export default function OrderHistoryList({order}) {
                 }
             </div>
             <div className="order_summary">
-                <p className="title is-5">Order Total: ${order.orderTotal}</p>
+                <p className="title is-5">Order Total: ${order.orderTotal.toFixed(2)}</p>
             </div>
         </div>
     )
