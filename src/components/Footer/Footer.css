@@ -6,6 +6,9 @@
 .footer p {
     color: white;
 }
+.footer span {
+    font-weight: 900;
+}
 .footer a {
     color: rgb(255, 162, 0);
 }

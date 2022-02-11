@@ -2,8 +2,8 @@ import './Footer.css';
 
 export default function Footer() {
     return (
-        <footer class="footer">
-            <div class="content has-text-centered">
+        <footer className="footer">
+            <div className="content has-text-centered">
                 <p>
                 <span>UPGD</span> by <a href="https://github.com/lejt" target="_blank">Jacky Tam</a>.
                 </p>
