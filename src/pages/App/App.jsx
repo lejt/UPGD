@@ -18,6 +18,8 @@ import * as ordersAPI from '../../utilities/orders-api';
 function App() {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState(null);
+  // past orders
+  const [orders, setOrders] = useState([]);
 
   async function handleAddToOrder(product) {
     console.log('Before handleAddToOrder')
@@ -49,11 +51,11 @@ function App() {
           <Routes>
             <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />
             <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
-            <Route path="/profile" element={<ProfilePage user={user} />} />
+            <Route path="/profile" element={<ProfilePage user={user} orders={orders} setOrders={setOrders}/>} />
             <Route path="/products" element={<ProductPage cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/:productName" element={<ProductDetailPage user={user} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
-            <Route path="/checkout/completed" element={<PaymentCompletePage user={user} />} />
+            <Route path="/checkout/completed" element={<PaymentCompletePage user={user} orders={orders} setOrders={setOrders} />} />
             <Route path="/*" element={<HomePage user={user} setCart={setCart} />} />
           </Routes>
         </>

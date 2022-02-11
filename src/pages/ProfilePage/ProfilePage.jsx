@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import OrderHistoryList from '../../components/OrderHistoryList/OrderHistoryList';
 
-export default function ProfilePage({user}) {
-    const [orders, setOrders] = useState([]);
+export default function ProfilePage({user, orders, setOrders}) {
+    // const [orders, setOrders] = useState([]);
 
     useEffect(function () {
         // Load previous orders (paid)
