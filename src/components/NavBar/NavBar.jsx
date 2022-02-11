@@ -92,8 +92,9 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                                 <ShoppingBasketSharpIcon/>
                                 <span className="header_basketCount">0</span>
                             </span>
+
                             <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
-                                
+                            {/* style={ isDropDownActive ? {position: "sticky"} : null} */}
                                 {cart && cart.lineItems.length
                                 // {cart
                                 ?
@@ -105,7 +106,7 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                                 }
                                 
                                 <hr className="navbar-divider"/>
-                      
+                    
                                 {/* <h2>TOTAL QTY: {cart.totalQty}</h2>
                                 <h2>SUBTOTAL: ${cart.orderTotal.toFixed(2)}</h2> */}
 
@@ -113,6 +114,7 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                                     <button onClick={handleCheckout} className="button is-fullwidth is-warning title is-6">Checkout</button>
                                 </div>
                             </div>    
+                           
                     </div>
                 </div>
             </div>

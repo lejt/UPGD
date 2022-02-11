@@ -33,12 +33,12 @@ async function getPayment(req, res) {
                 }
             }),
             // for localhost testing
-            // success_url: `http://localhost:3000/`,
-            // cancel_url: `http://localhost:3000/`
+            success_url: `http://localhost:3000/checkout/completed`,
+            cancel_url: `http://localhost:3000/`
 
             // for deployment 
-            success_url: `https://u-p-g-d.herokuapp.com/`,
-            cancel_url: `https://u-p-g-d.herokuapp.com/`
+            // success_url: `https://u-p-g-d.herokuapp.com/`,
+            // cancel_url: `https://u-p-g-d.herokuapp.com/`
     })
         res.json({ url: session.url })
     } catch (e) {

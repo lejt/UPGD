@@ -24,3 +24,11 @@ export function setItemQtyInCart(itemId, newQty) {
 export function deleteItemInCart(itemId) {
     return sendRequest(`${BASE_URL}/cart/item/${itemId}`, 'DELETE', {itemId});
 }
+// Updates the order's (cart's) isPaid property to true
+export function checkout() {
+    // Changing data on the server, so make it a POST request
+    return sendRequest(`${BASE_URL}/cart/checkout`, 'POST');
+}
+export function getOrderHistory() {
+    return sendRequest(`${BASE_URL}/history`);
+}

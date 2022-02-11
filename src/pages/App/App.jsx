@@ -11,6 +11,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import CheckoutPage from "../CheckoutPage/CheckoutPage";
 import ProductPage from "../ProductPage/ProductPage";
 import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
+import PaymentCompletePage from "../PaymentCompletePage/PaymentCompletePage";
 
 import * as ordersAPI from '../../utilities/orders-api';
 
@@ -52,6 +53,7 @@ function App() {
             <Route path="/products" element={<ProductPage cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/:productName" element={<ProductDetailPage user={user} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
+            <Route path="/checkout/completed" element={<PaymentCompletePage user={user} />} />
             <Route path="/*" element={<HomePage user={user} setCart={setCart} />} />
           </Routes>
         </>

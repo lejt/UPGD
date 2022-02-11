@@ -6,7 +6,9 @@
 }
 .navbar_checkout_dropdown {
     width: 25vw;
+    /* position: fixed; */
 }
+
 .navbar {
     border-bottom: 1px solid rgb(177, 177, 177);
 }
