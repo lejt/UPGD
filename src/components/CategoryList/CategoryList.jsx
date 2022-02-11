@@ -5,7 +5,7 @@ import {useState} from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
-export default function CategoryList() {
+export default function CategoryList({searchProducts}) {
     const [category1, setCategory1] = useState(false);
     const [category2, setCategory2] = useState(false);
     const [category3, setCategory3] = useState(false);
@@ -32,6 +32,26 @@ export default function CategoryList() {
         setCategory6(!category6)
     }
 
+    function searchQuery1() {
+        searchProducts('CPU')
+    }
+    function searchQuery2() {
+        searchProducts('Video')
+    }
+    function searchQuery3() {
+        searchProducts('motherboard')
+    }
+    function searchQuery4() {
+        searchProducts('case')
+    }
+    function searchQuery5() {
+        searchProducts('fan')
+    }
+    function searchQuery6() {
+        searchProducts('power')
+    }
+
+
     return (
         <div className="category_container">
             <h4>Categories</h4>
@@ -51,6 +71,28 @@ export default function CategoryList() {
             </div> */}
 
             <ul>
+                <li onClick={searchQuery1}>
+                    CPU
+                </li>
+                <li onClick={searchQuery2}>
+                    GPU
+                </li>
+                <li onClick={searchQuery3}>
+                    Motherboards
+                </li>
+                <li onClick={searchQuery4}>
+                    Computer Case
+                </li>
+                <li onClick={searchQuery5}>
+                    Fans & PC Cooling
+                </li>
+                <li onClick={searchQuery6}>
+                    Power Supplies
+                </li>
+            </ul>
+
+
+            {/* <ul>
                 <li onClick={handleCatToggle1}>
                     CPU
                     {category1 ? <ArrowDropUpIcon/>: <ArrowDropDownIcon/>}
@@ -81,7 +123,7 @@ export default function CategoryList() {
                             <li>AMD</li>
                         </ul>
                     </div>
-                <li onClick={handleCatToggle3}>
+                <li onClick={handleCatToggle4}>
                     Computer Cases
                     {category4 ? <ArrowDropUpIcon/>: <ArrowDropDownIcon/>}
                 </li>
@@ -91,7 +133,7 @@ export default function CategoryList() {
                             <li>AMD</li>
                         </ul>
                     </div>
-                <li onClick={handleCatToggle3}>
+                <li onClick={handleCatToggle5}>
                     Fans & PC Cooling
                     {category5 ? <ArrowDropUpIcon/>: <ArrowDropDownIcon/>}
                 </li>
@@ -101,7 +143,7 @@ export default function CategoryList() {
                             <li>AMD</li>
                         </ul>
                     </div>
-                <li onClick={handleCatToggle3}>
+                <li onClick={handleCatToggle6}>
                     Power Supplies
                     {category6 ? <ArrowDropUpIcon/>: <ArrowDropDownIcon/>}
                 </li>
@@ -112,7 +154,7 @@ export default function CategoryList() {
                         </ul>
                     </div>
             
-            </ul>
+            </ul> */}
 
 
         </div>

@@ -104,7 +104,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
 
             <div className="products_display">
                 <aside className="products_categories">
-                    <CategoryList />
+                    <CategoryList searchProducts={searchProducts}/>
                 </aside>
                 <aside className="products">
                     {/* {console.log(products.products)} */}
