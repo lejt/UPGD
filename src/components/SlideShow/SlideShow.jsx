@@ -3,9 +3,10 @@ import {useState, useEffect, useRef} from 'react';
 
 export default function SlideShow() {
     const colors = [
-        "https://www.teahub.io/photos/full/247-2472079_weekly-wallpaper-backgrounds-computer-components.jpg",
+        "https://wallpaperbat.com/img/90913-hardware-wallpaper-and-desktop-background-desktop-background.jpg",
         "http://cdn.mos.cms.futurecdn.net/MdhoETzFvrzaKiqfuymfDA.jpg",
-        "https://www.howtogeek.com/wp-content/uploads/2021/05/rgb_header.jpg?width=1198&trim=1,1&bg-color=000&pad=1,1"
+        "https://www.howtogeek.com/wp-content/uploads/2021/05/rgb_header.jpg?width=1198&trim=1,1&bg-color=000&pad=1,1",
+        "https://www.teahub.io/photos/full/247-2472079_weekly-wallpaper-backgrounds-computer-components.jpg",
     ];
     const delay = 5000;
 

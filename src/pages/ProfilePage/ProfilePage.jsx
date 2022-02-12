@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import OrderHistoryList from '../../components/OrderHistoryList/OrderHistoryList';
 
-export default function ProfilePage({user, orders, setOrders}) {
+export default function ProfilePage({user, orders, setOrders, setCart}) {
     // const [orders, setOrders] = useState([]);
 
     useEffect(function () {
@@ -13,6 +13,13 @@ export default function ProfilePage({user, orders, setOrders}) {
           setOrders(orders || null);
         }
         fetchOrderHistory();
+
+        async function getCart() {
+            const cart = await ordersAPI.getCart();
+            setCart(cart);
+            // updateCart(cart);
+        }
+        getCart();
     }, []);
 
 

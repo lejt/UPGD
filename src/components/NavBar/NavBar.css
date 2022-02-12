@@ -3,7 +3,7 @@
     /* border-bottom: 1px solid rgb(177, 177, 177); */
 }
 .navbar-brand h1 {
-    color: white;
+    /* color: white; */
 }
 .navbar_tabs {
     /* color: white; */
@@ -18,6 +18,7 @@
 }
 .navbar_checkout_dropdown {
     width: 25vw;
+    color: black;
 }
 
 
