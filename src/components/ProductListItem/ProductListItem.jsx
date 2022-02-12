@@ -20,7 +20,9 @@ export default function ProductListItem({product, handleAddToOrder, handleAddMes
                 state={{ dataToDetail: product }}
             >
                 <div className="product_card">
-                    <img src={product.image} alt="" /><br/><br/>
+                    <div>
+                        <img src={product.image} alt="" /><br/><br/><br/>
+                    </div>
                     <div className="product_card_desc">
                         <strong>{product.title}</strong><br/><br/>
                         ${productPrice.toFixed(2)}

@@ -24,7 +24,7 @@ export default function OrderHistoryList({order}) {
                                 </div>
                             </div>
                             <div className="order_detail_purchase">
-                                <p>${items.item.price}</p>
+                                <p className="subtitle is-5">${items.item.price.toFixed(2)}</p>
                             </div>
                         </div>
                     )

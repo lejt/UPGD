@@ -18,5 +18,10 @@
     padding: 0 10px;
 }
 .product_card img:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
+}
+.product_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

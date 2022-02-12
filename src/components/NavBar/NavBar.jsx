@@ -35,31 +35,32 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
     }
     
     return (
-        <nav className="navbar">
+        <nav className="navbar is-black">
             <div className="navbar-brand">
                 <Link to="/">
                     <div className="navbar-item">
-                        <h1 className="title is-3">UPGD</h1>
+                        {/* <h1 className="title is-3">UPGD</h1> */}
+                        <h1 className="btn-shine title is-3">// UPGD //∆ </h1>
                     </div>
                 </Link>
             </div>
             <div className="navbar-menu">
                 <div className="navbar-end">
-                    <Link to="/products" className="navbar-item">
+                    <Link to="/products" className="navbar-item navbar_tabs">
                         <span>All Products</span>
                     </Link>
-                    <Link to="" className="navbar-item">
+                    <Link to="" className="navbar-item navbar_tabs">
                         <span>Category 1</span>
                     </Link>
-                    <Link to="" className="navbar-item">
+                    <Link to="" className="navbar-item navbar_tabs">
                         <span>Category 2</span>
                     </Link>
 
                     <div className="navbar-item has-dropdown is-hoverable">
                         {user ?
-                        <div>
+                        <>
                             <span className="navbar-link">
-                                Hello, {user.name}
+                                <h1>Hello, {user.name}</h1>
                             </span>
                             <div className="navbar-dropdown">
                                 <Link to="/profile" className="navbar-item">
@@ -69,11 +70,11 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                                     Log Out
                                 </Link>
                             </div>    
-                        </div>
+                        </>
                         :
-                        <div>
+                        <>
                             <span className="navbar-link">
-                                Login/Sign Up
+                                <h1>Login/Sign Up</h1>
                             </span>
                             <div className="navbar-dropdown">
                                 <Link to="/login" className="navbar-item">
@@ -83,14 +84,23 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                                     Sign Up
                                 </Link>
                             </div>    
-                        </div>
+                        </>
                         }
                     </div>
                     
                     <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } >
                             <span className="navbar-link" onClick={toggleCheckoutDropDown}>
-                                <ShoppingBasketSharpIcon/>
-                                <span className="header_basketCount">0</span>
+                                <div>
+                                    <ShoppingBasketSharpIcon/>
+                                    <span className="header_basketCount">
+                                        {cart && cart.lineItems
+                                        ?
+                                        cart.lineItems.length
+                                        :
+                                        0
+                                        }
+                                    </span>
+                                </div>
                             </span>
 
                             <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
