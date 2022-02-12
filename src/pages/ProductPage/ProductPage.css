@@ -1,5 +1,6 @@
 .products {
-    /* height: 100vh; */
+    background-color: rgb(237, 237, 236);
+    padding-bottom: 50px;
 }
 .products_banner {
     background-color: gray;
@@ -9,32 +10,49 @@
     justify-content: center;
 }
 .products_header {
-    height: 40px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 10px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
+    background-color: white;
 }
 .products_header_right {
     display: flex;
+    align-items: center;
     /* border: 1px solid blue; */
+}
+.products_header h3 {
+    margin: 0 30px;
 }
 .products_searchBar {
     margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+.products_searchBar input {
+    height: 34px;
+    width: 200px;
+    background-color: rgb(211, 211, 211);
+}
+.products_searchBar button {
+    height: 35px;
 }
 .products_display {
     display: flex;
 }
 .products_categories {
     min-width: 20%;
-    /* border-right: 1px solid black; */
+    height: 100%;
+    border-right: 1px dotted black;
     /* border: 1px solid blue; */
-    height: 60vh;
+    background-image: linear-gradient(rgba(235, 168, 0, 1), rgba(215, 215, 14, 0.5), rgb(237, 237, 236));
+  
 }
-.products {
+.products_product {
     /* border: 2px solid green; */
+    padding: 30px;
 }
 .add_notification {
     position: fixed;

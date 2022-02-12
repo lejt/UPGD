@@ -5,6 +5,7 @@ import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function ProductPage({cart, setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
@@ -92,13 +93,19 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
                 <h1>All Products</h1>
             </div>
             <div className="products_header">
-                <h3># of Items</h3>
+                <h3>{products.length} Items</h3>
                 <div className="products_header_right">
                     <div className="products_searchBar">
-                        <input className="products_searchInput" type="text" name="search" value={searchQuery} onChange={handleChange} placeholder="Look up products"/>
-                        <button onClick={()=> searchProducts(searchQuery)}>Search</button>
+                        <div>
+                            <input className="products_searchInput" type="text" name="search" value={searchQuery} onChange={handleChange} placeholder="Look up products"/>
+                        </div>
+                        <div>
+                            <button onClick={()=> searchProducts(searchQuery)}><SearchIcon/></button>
+                        </div>
                     </div>
-                    <h3>Sort By</h3>
+                    <div>
+                        <h3>Sort By</h3>
+                    </div>
                 </div>
             </div>
 
@@ -106,7 +113,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
                 <aside className="products_categories">
                     <CategoryList searchProducts={searchProducts}/>
                 </aside>
-                <aside className="products">
+                <aside className="products_product">
                     {/* {console.log(products.products)} */}
                     {/* {products.products.forEach(p=>console.log(p.title))} */}
                     <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} handleAddMessage={handleAddMessage} />

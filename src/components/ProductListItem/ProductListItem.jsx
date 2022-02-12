@@ -2,6 +2,17 @@ import "./ProductListItem.css";
 import { Link } from "react-router-dom";
 
 export default function ProductListItem({product, handleAddToOrder, handleAddMessage}) {
+    
+    function findPeriodIdx(data) {
+        return data.indexOf(".");
+    }
+    let periodIdx;
+    let productPrice = (product.price.replace(',','')).trim();
+    // converts price type string to float
+    periodIdx = findPeriodIdx(productPrice);
+    productPrice = parseFloat(productPrice.slice(1,periodIdx+3));
+    // console.log('ProductPrice: '+ productPrice);
+    
     return (
         <div className="product_list_item">
             <Link 
@@ -9,9 +20,12 @@ export default function ProductListItem({product, handleAddToOrder, handleAddMes
                 state={{ dataToDetail: product }}
             >
                 <div className="product_card">
-                    <img src={product.image} alt="" />
-                    {product.title}<br/><br/>
-                    {product.price}<br/>
+                    <img src={product.image} alt="" /><br/><br/>
+                    <div className="product_card_desc">
+                        <strong>{product.title}</strong><br/><br/>
+                        ${productPrice.toFixed(2)}
+                    </div>
+                    {/* {product.price} */}
                 </div>
             </Link>
             <div className="product_addToCart">

@@ -3,8 +3,8 @@ import "./ProductReview.css";
 export default function ProductReview({review}) {
     return (
         <div className="reviews_container">
-            <div className="card">
-                <div className="card-content">
+            <div className="review_card">
+                <div className="review_card_content">
                     <strong>{review.review_title}</strong><br/>
                     {review.name}<br/><br/>
                     <div className="content">

@@ -44,7 +44,7 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
 
     // productOne.reviews.forEach(r=> console.log(r));
     return (
-        <div>
+        <div className="product_detail_page">
             {/* { productName } */}
             {/* { productPassed.link } */}
             <div className="product_header">
@@ -52,12 +52,15 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
                     <img src={ productImage } alt="" />
                 </div>
                 <div className="product_profile">
-                    <strong>{ productOne.title }</strong><br/>
-                    { productOne.price}
+                    <strong className="title is-3">{ productOne.title }</strong><br/><br/>
+                    <p className="subtitle is-5">{ productOne.price}</p>
                     <br/>
                     <br/>
-                    <button onClick={()=> {handleAddToOrder(productPassed)}}>
-                    Add to Cart
+                    <button 
+                        onClick={()=> {handleAddToOrder(productPassed)}}
+                        className="button is-warning is-fullwidth is-focused"
+                    >
+                    <span>Add to Cart</span>
                     </button>
                 </div>
             </div>

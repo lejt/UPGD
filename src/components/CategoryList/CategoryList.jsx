@@ -54,7 +54,7 @@ export default function CategoryList({searchProducts}) {
 
     return (
         <div className="category_container">
-            <h4>Categories</h4>
+            <h4><strong>CATEGORIES</strong></h4>
 
             {/* <div className={category ? "dropdown is-active": "dropdown" }> 
                 <div className="dropdown-trigger" onClick={handleCatToggle}>

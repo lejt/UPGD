@@ -1,3 +1,8 @@
+.profile_page {
+    height: 100%;
+    /* border: 5px solid rgb(147, 8, 31); */
+    padding-bottom: 30px;
+}
 .profile_header {
     display: flex;
     margin-top: 30px;
@@ -6,7 +11,7 @@
     /* border: 1px dashed blue; */
     align-items: flex-end;
     justify-content: space-between;
-    ;
+    
 }
 .profile_orders {
     border: 1px dotted gray;

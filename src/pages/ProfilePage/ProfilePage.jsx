@@ -17,7 +17,7 @@ export default function ProfilePage({user, orders, setOrders}) {
 
 
     return (
-        <div>
+        <div className="profile_page">
             <div className="profile_header">
                 <div className="profile_info">
                     <p className="subtitle is-3"><strong>{user.name}'s Page</strong></p>
