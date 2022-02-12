@@ -1,10 +1,17 @@
 import './OrderHistoryList.css';
 
 export default function OrderHistoryList({order}) {
+
+    function toDateString(text) {
+        const d = new Date(text);
+        let dateStr = d.toLocaleString();
+        return dateStr;
+    }
+
     return (
         <div className="order_history_list">
             <div className="order_info">
-                <p>{order.updatedAt}</p>
+                <p>{toDateString(order.updatedAt)}</p>
                 <p>Order ID: {order._id}</p>
             </div>
             <div className="order_detail">

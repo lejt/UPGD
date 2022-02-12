@@ -14,7 +14,7 @@
     
 }
 .profile_orders {
-    border: 1px dotted gray;
+    border: 1px solid rgb(0, 0, 0);
     width: 82%;
     margin: 0 auto;
     padding: 5px;

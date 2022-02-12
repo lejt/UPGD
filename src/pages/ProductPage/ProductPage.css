@@ -3,11 +3,13 @@
     padding-bottom: 50px;
 }
 .products_banner {
-    background-color: gray;
+    background: rgb(25,25,25);
+    background: radial-gradient(circle, rgba(25,25,25,1) 1%, rgba(23,23,23,1) 5%, rgba(44,44,44,1) 21%, rgba(49,49,49,1) 37%, rgba(57,57,57,1) 60%, rgba(93,93,93,1) 91%);
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 .products_header {
     height: 50px;

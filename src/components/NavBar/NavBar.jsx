@@ -40,7 +40,7 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                 <Link to="/">
                     <div className="navbar-item">
                         {/* <h1 className="title is-3">UPGD</h1> */}
-                        <h1 className="btn-shine title is-3">// UPGD //∆ </h1>
+                        <h1 className="btn-shine title is-3">// UPGD</h1>
                     </div>
                 </Link>
             </div>

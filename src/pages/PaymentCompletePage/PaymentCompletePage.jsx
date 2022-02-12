@@ -25,6 +25,11 @@ export default function PaymentCompletePage({user, orders, setOrders}) {
 
     }, []);
     
+    function toDateString(text) {
+        const d = new Date(text);
+        let dateStr = d.toLocaleString();
+        return dateStr;
+    }
 
     return (
         <div>
@@ -51,7 +56,7 @@ export default function PaymentCompletePage({user, orders, setOrders}) {
             <div className="card">
                 <div className="card-header">
                     <div>
-                        {orders[0].updatedAt}
+                        {toDateString(orders[0].updatedAt)}
                     </div>
                     <div>
                         {orders[0]._id}
@@ -61,7 +66,7 @@ export default function PaymentCompletePage({user, orders, setOrders}) {
                     {orders[0].lineItems.map(items => <PaymentCompleteItems items={items} />)}
                 </div>
                 <div className="payment_total">
-                    Total: {(orders[0]).orderTotal}
+                    <p className="title is-4"><strong>Total: </strong><span>${(orders[0]).orderTotal}</span></p>
                 </div>
             </div>
             // console.log(orders[0].lineItems)

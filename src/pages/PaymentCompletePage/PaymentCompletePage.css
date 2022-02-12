@@ -1,14 +1,18 @@
 .card {
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 100px;
+    box-shadow: 5px 10px #888888;
+    border: 1px solid #888888;
 }
 .card-header {
     display: flex;
     justify-content: space-between;
     padding: 0 30px;
+    background-color: rgb(140, 208, 38);
 }
 .card_content {
-    border: 1px dotted red;
+    /* border: 1px dotted red; */
+    padding: 0 30px;
 }
 .payment_msg {
     text-align: center;
@@ -16,7 +20,7 @@
 }
 .payment_total {
     text-align: end;
-    padding: 0 30px;
+    padding: 10px 30px;
 }
 .payment_check_icon {
     width: 100px;

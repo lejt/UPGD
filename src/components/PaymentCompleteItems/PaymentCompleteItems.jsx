@@ -8,8 +8,8 @@ export default function PaymentCompleteItems({items}) {
                         <img src={items.item.image} alt="" className="receipt_image" />
                     </div>
                     <div className="receipt_left_info">
-                        <p>{items.item.title}</p>
-                        <p>x{items.qty}</p>
+                        <p className="subtitle is-4">{items.item.title}</p>
+                        <p>Qty: x{items.qty}</p>
                     </div>
                 </div>
                 <div className="receipt_unit_price">
