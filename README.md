@@ -3,8 +3,8 @@
 ## General Information
 UPGD is short for upgrade/update. It is an online store to purchase computer hardware and accessories. The web app is user-centric, allowing visitors to browse products and product details but unable to add items to cart until logged in. Visitors will register with a name, email, and passsword which are then sent to the backend via AJAX and later encoded (JWT). Once logged in, users will have access to full CRUD in their shopping cart and also pay via Stripe API.
 
-<img src="/public/assets/screenshots/homepage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/productpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/productdetailpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/paymentpage.jpg" width=200px height=500px overflow="hidden">
-<img  src="/public/assets/screenshots/purchaseconfirmationpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/profilepage.jpg" width=200px height=500px overflow="hidden">
+<img src="/public/assets/screenshots/homepage.jpg" width=100px height=120px overflow="hidden"> <img  src="/public/assets/screenshots/productpage.jpg" width=100px height=120px overflow="hidden"> <img  src="/public/assets/screenshots/productdetailpage.jpg" width=100px height=120px overflow="hidden"> <img  src="/public/assets/screenshots/paymentpage.jpg" width=100px height=120px overflow="hidden">
+<img  src="/public/assets/screenshots/purchaseconfirmationpage.jpg" width=100px height=120px overflow="hidden"> <img  src="/public/assets/screenshots/profilepage.jpg" width=100px height=120px overflow="hidden">
 
 ## Technologies used
 * React
