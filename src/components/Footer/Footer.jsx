@@ -4,10 +4,8 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="content has-text-centered">
-                <p>
-                <span>UPGD</span> by <a href="https://github.com/lejt" target="_blank">Jacky Tam</a>.
-                </p>
-                <br/>
+                <p><span>UPGD</span> by <a href="https://github.com/lejt" target="_blank">Jacky Tam</a></p>
+
                 <div className="columns">
                     <div className="column">
                         <div className="col_content">
@@ -29,7 +27,6 @@ export default function Footer() {
                             </ul>
                         </div>
                     </div>
-                    
                     <div className="column">
                     <div className="col_content">
                         <h4>Social Media</h4>
@@ -42,7 +39,9 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
+
                 <hr/>
+
                 <div className="row">
                     &copy;2022 UPGD Inc. | All rights reserved | Terms of Service | Privacy
                 </div>

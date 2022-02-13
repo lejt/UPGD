@@ -1,8 +1,7 @@
 .products {
     padding-bottom: 50px;
     background: rgb(99,99,99);
-background: linear-gradient(0deg, rgba(99,99,99,1) 6%, rgba(116,116,116,1) 16%, rgba(126,126,126,1) 19%, rgba(135,135,135,1) 25%, rgba(153,153,153,1) 30%, rgba(161,161,161,1) 35%, rgba(237,237,236,1) 91%);
-
+    background: linear-gradient(0deg, rgba(99,99,99,1) 6%, rgba(116,116,116,1) 16%, rgba(126,126,126,1) 19%, rgba(135,135,135,1) 25%, rgba(153,153,153,1) 30%, rgba(161,161,161,1) 35%, rgba(237,237,236,1) 91%);
 }
 .products_banner {
     background: rgb(25,25,25);
@@ -49,36 +48,9 @@ background: linear-gradient(0deg, rgba(99,99,99,1) 6%, rgba(116,116,116,1) 16%, 
 .products_categories {
     min-width: 20%;
     height: 100%;
-    border-right: 1px dotted black;
-    /* border: 1px solid blue; */
+    border-right: 1px solid rgb(135, 135, 135);
     background-image: linear-gradient(rgba(235, 168, 0, 1), rgba(215, 215, 14, 0.5), rgb(237, 237, 236));
-  
 }
 .products_product {
-    /* border: 2px solid green; */
     padding: 30px;
-}
-.add_notification {
-    position: fixed;
-    width: 300px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 5;
-    opacity: 0;
-}
-.alert-shown {
-    position: fixed;
-    width: 300px;
-    left: 50%;
-    transform: translate(-50%);
-    opacity: 1;
-    transition: all 250ms linear 0.2s; 
-}
-.alert-hidden {
-    position: fixed;
-    width: 300px;
-    left: 50%;
-    transform: translate(-50%);
-    opacity: 0;
-    transition: all 250ms linear 1s; 
 }

@@ -1,10 +1,9 @@
 import "./ProfilePage.css";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import OrderHistoryList from '../../components/OrderHistoryList/OrderHistoryList';
 
 export default function ProfilePage({user, orders, setOrders, setCart}) {
-    // const [orders, setOrders] = useState([]);
 
     useEffect(function () {
         // Load previous orders (paid)
@@ -17,7 +16,6 @@ export default function ProfilePage({user, orders, setOrders, setCart}) {
         async function getCart() {
             const cart = await ordersAPI.getCart();
             setCart(cart);
-            // updateCart(cart);
         }
         getCart();
     }, []);
@@ -33,8 +31,6 @@ export default function ProfilePage({user, orders, setOrders, setCart}) {
                     <p>Email: {user.email}</p>
                 </div>
             </div>
-
-            <hr/>
 
             <h4 className="profile_orders title is-4">Order History</h4>
             {orders[0] 

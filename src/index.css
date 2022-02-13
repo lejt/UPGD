@@ -1,5 +1,4 @@
-/* CSS Custom Properties */
-*, *:before, *:after {
+* {
   box-sizing: border-box;
   margin: 0;
 }

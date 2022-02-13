@@ -1,8 +1,7 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState }  from "react";
 import "./NavBar.css";
 import { Link } from 'react-router-dom';
 import * as userService from "../../utilities/users-service";
-import * as ordersAPI from "../../utilities/orders-api";
 import * as paymentsAPI from '../../utilities/payments-api';
 import ShoppingBasketSharpIcon from '@mui/icons-material/ShoppingBasketSharp';
 import NavCheckout from "../../components/NavCheckout/NavCheckout";
@@ -10,17 +9,6 @@ import NavCheckout from "../../components/NavCheckout/NavCheckout";
 export default function NavBar({user, setUser, cart, setCart, handleChangeQty, handleDeleteItem}) {
     const [isDropDownActive, setIsDropDownActive] = useState(false);
 
-    // cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} />)
-    
-    // console.log(cart)
-    // if (!cart) return null;
-    // const cartItems =  cart.lineItems.map(item => 
-    //     <NavCheckout 
-    //         item={item}
-    //     />
-    // );
-
-    
     function handleLogOut() {
         userService.logOut();
         setUser(null);
@@ -39,7 +27,6 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
             <div className="navbar-brand">
                 <Link to="/">
                     <div className="navbar-item">
-                        {/* <h1 className="title is-3">UPGD</h1> */}
                         <h1 className="btn-shine title is-3">// UPGD</h1>
                     </div>
                 </Link>
@@ -89,42 +76,34 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                     </div>
                     
                     <div className={ isDropDownActive ? 'navbar-item has-dropdown is-active': 'navbar-item has-dropdown' } >
-                            <span className="navbar-link" onClick={toggleCheckoutDropDown}>
-                                <div>
-                                    <ShoppingBasketSharpIcon/>
-                                    <span className="header_basketCount">
-                                        {cart && cart.lineItems
-                                        ?
-                                        cart.lineItems.length
-                                        :
-                                        0
-                                        }
-                                    </span>
-                                </div>
-                            </span>
+                        <span className="navbar-link" onClick={toggleCheckoutDropDown}>
+                            <div>
+                                <ShoppingBasketSharpIcon/>
+                                <span className="header_basketCount">
+                                    {cart && cart.lineItems
+                                    ?
+                                    cart.lineItems.length
+                                    :
+                                    0
+                                    }
+                                </span>
+                            </div>
+                        </span>
 
-                            <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
-                            {/* style={ isDropDownActive ? {position: "sticky"} : null} */}
-                                {cart && cart.lineItems.length
-                                // {cart
-                                ?
-                                // <h1>there are cart items</h1>
-                                // cartItems
-                                cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} handleChangeQty={handleChangeQty} handleDeleteItem={handleDeleteItem} />)
-                                :
-                                <h5 className="title is-6 is-flex is-justify-content-center"><br/>- No Items Added Yet -</h5>
-                                }
-                                
-                                <hr className="navbar-divider"/>
-                    
-                                {/* <h2>TOTAL QTY: {cart.totalQty}</h2>
-                                <h2>SUBTOTAL: ${cart.orderTotal.toFixed(2)}</h2> */}
+                        <div className="navbar-dropdown is-right navbar_checkout_dropdown" >
+                            {cart && cart.lineItems.length
+                            ?
+                            cart.lineItems.map((item,idx)=> <NavCheckout key={idx} item={item} handleChangeQty={handleChangeQty} handleDeleteItem={handleDeleteItem} />)
+                            :
+                            <h5 className="title is-6 is-flex is-justify-content-center"><br/>- No Items Added Yet -</h5>
+                            }
+                            
+                            <hr className="navbar-divider"/>
 
-                                <div className="navbar_checkout_button">
-                                    <button onClick={handleCheckout} className="button is-fullwidth is-warning title is-6">Checkout</button>
-                                </div>
-                            </div>    
-                           
+                            <div className="navbar_checkout_button">
+                                <button onClick={handleCheckout} className="button is-fullwidth is-warning title is-6">Checkout</button>
+                            </div>
+                        </div>    
                     </div>
                 </div>
             </div>

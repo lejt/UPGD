@@ -1,7 +1,7 @@
 import "./ProductList.css";
 import ProductListItem from "../ProductListItem/ProductListItem";
 
-export default function ProductList({products, setCart, handleAddToOrder}) {
+export default function ProductList({products, handleAddToOrder}) {
 
     return (
         <div className="products_grid">

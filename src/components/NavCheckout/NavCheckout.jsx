@@ -11,22 +11,10 @@ export default function NavCheckout({item, handleChangeQty, handleDeleteItem}) {
                     <p>{item.item.title}</p>
                 </div>
             </div>
+
             <div className="navbar_checkout_dropdown_pricenqty">
                 <div>
-                    {/* <button onClick={()=> handleChangeQty(item._id, item.qty - 1)}>-</button> */}
-                    Qty: 
-                    {/* {item.qty}
-                    <input 
-                        disabled
-                        type="number" 
-                        name="itemQty" 
-                        value={item.qty} 
-                        onChange={()=> {
-
-                            handleChangeQty(item._id, item.qty + 1)
-                        
-                        }} 
-                    /> */}
+                    <span>Qty: </span>
                     <select value={item.qty} onChange={(evt)=> handleChangeQty(item._id, evt.target.value)} >
                         <option value={1}>1</option>
                         <option value={2}>2</option>
@@ -34,18 +22,14 @@ export default function NavCheckout({item, handleChangeQty, handleDeleteItem}) {
                         <option value={4}>4</option>
                         <option value={5}>5</option>
                     </select>
-                    {/* <button onClick={()=> handleChangeQty(item._id, item.qty + 1)}>+</button> */}
-                    
                 </div>
                 <div>
-                    {/* {console.log('EXTPRICE: '+item.item.extPrice)} */}
-                    {/* ${item.item.price*item.qty} */}
-                    {/* ${item.item.price.toFixed(2)}<br/> */}
                     ${item.extPrice.toFixed(2)}
                 </div>
             </div>
+
             <div className="navbar_remove_item">
-                <button className="button is-danger is-inverted" onClick={()=> handleDeleteItem(item._id)}>Remove Item</button>
+                <button className="button is-danger is-inverted is-small" onClick={()=> handleDeleteItem(item._id)}>Remove Item</button>
             </div>
         </div>
     )

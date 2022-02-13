@@ -1,27 +1,11 @@
-.navbar {
-    /* background-color: rgb(0, 0, 0); */
-    /* border-bottom: 1px solid rgb(177, 177, 177); */
-}
-.navbar-brand h1 {
-    /* color: white; */
-}
-.navbar_tabs {
-    /* color: white; */
-}
-.navbar-link h1 {
-    /* color: white; */
-}
 .navbar-link div {
-    /* color: white; */
     display: flex;
-    
 }
 .navbar_checkout_dropdown {
     width: 25vw;
     color: black;
 }
-
-
+/* Nav Logo CSS and animation */
 .btn-shine {
     background-color: black;
     font-family: 'Poppins', sans-serif;
@@ -39,7 +23,6 @@
     text-decoration: none;
     white-space: nowrap;
 }
-    
 @keyframes shine {
     0%
       {background-position: 0px}

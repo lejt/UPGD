@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getUser } from "../../utilities/users-service";
 import { Routes, Route } from "react-router-dom";
 
@@ -22,21 +22,18 @@ function App() {
   const [orders, setOrders] = useState([]);
 
   async function handleAddToOrder(product) {
-    console.log('Before handleAddToOrder')
-    console.log(product.title, product.price);
-    const cart = await ordersAPI.addItemToCart(product);
-    setCart(cart);
-    console.log('After handleAddToOrder success')
+    if (user) {
+      const cart = await ordersAPI.addItemToCart(product);
+      setCart(cart);
+    }
   }
 
   async function handleChangeQty(itemId, newQty) {
-    console.log('handlechangeqty clicked: '+ itemId, newQty)
     const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
     setCart(updatedCart);
   }
 
   async function handleDeleteItem(itemId) {
-    console.log('handleDeleteItem clicked: '+ itemId)
     const updatedCart = await ordersAPI.deleteItemInCart(itemId);
     setCart(updatedCart);
   }

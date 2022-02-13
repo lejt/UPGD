@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 export default function ProductListItem({product, handleAddToOrder}) {
     
+    // product price formatting from api, removing all characters besides number
+    // and converts type string to float
     function findPeriodIdx(data) {
         return data.indexOf(".");
     }
     let periodIdx;
     let productPrice = (product.price.replace(',','')).trim();
-    // converts price type string to float
     periodIdx = findPeriodIdx(productPrice);
     productPrice = parseFloat(productPrice.slice(1,periodIdx+3));
-    // console.log('ProductPrice: '+ productPrice);
     
     return (
         <div className="product_list_item">
@@ -27,20 +27,8 @@ export default function ProductListItem({product, handleAddToOrder}) {
                         <strong>{product.title}</strong><br/><br/>
                         ${productPrice.toFixed(2)}
                     </div>
-                    {/* {product.price} */}
                 </div>
             </Link>
-            <div className="product_addToCart">
-                {/* <button 
-                    className="button is-warning"
-                    onClick={()=> {
-                        handleAddToOrder(product)
-                        handleAddMessage()
-                    }}
-                >
-                Add
-                </button> */}
-            </div>
         </div>
     )
 }

@@ -4,14 +4,12 @@ import * as ordersAPI from "../../utilities/orders-api";
 import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
 import CategoryList from "../../components/CategoryList/CategoryList";
-
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function ProductPage({pageCategory, cart, setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     
-
     let getProduct;
     switch (pageCategory) {
         case "all Products":
@@ -23,14 +21,16 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
         case "accessories":
             getProduct = "accessory"
             break;
+        default:
+            getProduct = 'all';
+            break;
     }
 
+    // All product category pages from navbar use this 
+    // page as template and will re-render data based on pageCategory
     useEffect(function() {
         async function getProducts() {
             const items = await itemsAPI.getAll(getProduct);
-            // console.log(items.products);
-            // console.log(Object.values(items.products))
-            // console.log(items.products)
             setProducts(Object.values(items.products));
         }
         getProducts();
@@ -38,49 +38,28 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
         async function getCart() {
             const cart = await ordersAPI.getCart();
             setCart(cart);
-            // updateCart(cart);
         }
         getCart();
 
-        
     },[pageCategory]);
-
-  
-
-
-    // useEffect(()=> {
-    //     setTimeout(()=> {
-    //         setVisible(false);
-    //     }, props.delay);
-    // }, [props.delay]);
-
-    // useEffect(function() {
-    //     // if (!cart) return null;
-    //     async function getCart() {
-    //         const cart = await ordersAPI.getCart();
-    //         setCart(cart);
-    //         // updateCart(cart);
-    //     }
-    //     getCart();
-    // });
     
     function handleChange(evt) {
         setSearchQuery(evt.target.value);
     }
 
+    // utilizes the data scraper api search query
     async function searchProducts(searchQuery) {
         const items = await itemsAPI.getAll(searchQuery);
         setProducts(Object.values(items.products));
+        setSearchQuery("")
     }
-
-
 
     return (
         <div className="products">
-
             <div className="products_banner">
                 <h1>{pageCategory.toUpperCase()}</h1>
             </div>
+
             <div className="products_header">
                 <h3>{products.length} Items</h3>
                 <div className="products_header_right">
@@ -103,9 +82,7 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
                     <CategoryList pageCategory={pageCategory} searchProducts={searchProducts}/>
                 </aside>
                 <aside className="products_product">
-                    {/* {console.log(products.products)} */}
-                    {/* {products.products.forEach(p=>console.log(p.title))} */}
-                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} />
+                    <ProductList products={products} handleAddToOrder={handleAddToOrder} />
                 </aside>
             </div>
         </div>

@@ -22,6 +22,9 @@
     display: flex;
     justify-content: space-between;
 }
+.navbar_checkout_dropdown_pricenqty select {
+    background-color: rgb(240, 240, 240);
+}
 .navbar_remove_item {
     display: flex;
     justify-content: end;

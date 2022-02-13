@@ -1,7 +1,5 @@
 .product_list_item {
     min-height: 400px;
-    /* overflow-y: scroll; */
-    /* border: 1px solid black; */
     border-radius: 5px;
     background-color: white;
     padding: 30px 10px;
@@ -11,17 +9,16 @@
     color: black;
 }
 .product_list_item a:hover {
-    color: rgb(131, 88, 13);
-}
-.product_card_desc {
-    /* border: 1px solid blue; */
-    padding: 0 10px;
-}
-.product_card img:hover {
-    transform: scale(1.2);
+    color: rgb(255, 0, 111);
 }
 .product_card {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.product_card_desc {
+    padding: 0 10px;
+}
+.product_card img:hover {
+    transform: scale(1.2);
 }
