@@ -13,6 +13,7 @@ import ProductPage from "../ProductPage/ProductPage";
 import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
 import PaymentCompletePage from "../PaymentCompletePage/PaymentCompletePage";
 import Footer from "../../components/Footer/Footer";
+import ProductPeripheralsPage from "../ProductPeripheralsPage/ProductPeripheralsPage";
 import * as ordersAPI from '../../utilities/orders-api';
 
 function App() {
@@ -51,8 +52,11 @@ function App() {
             <Route path="/login" element={<AuthPage user={user} setUser={setUser}/>} />
             <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
             <Route path="/profile" element={<ProfilePage user={user} orders={orders} setOrders={setOrders} setCart={setCart} />} />
-            <Route path="/products" element={<ProductPage cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
+            <Route path="/products" element={<ProductPage pageCategory="allProducts" cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/:productName" element={<ProductDetailPage user={user} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
+            <Route path="/products/peripherals" element={<ProductPage pageCategory="peripherals" cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
+
+
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />
             <Route path="/checkout/completed" element={<PaymentCompletePage user={user} orders={orders} setOrders={setOrders} />} />
             <Route path="/*" element={<HomePage user={user} setCart={setCart} />} />

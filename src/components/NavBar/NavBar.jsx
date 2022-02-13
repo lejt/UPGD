@@ -49,8 +49,8 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                     <Link to="/products" className="navbar-item navbar_tabs">
                         <span>All Products</span>
                     </Link>
-                    <Link to="" className="navbar-item navbar_tabs">
-                        <span>Category 1</span>
+                    <Link to="/products/peripherals" className="navbar-item navbar_tabs">
+                        <span>Peripherals</span>
                     </Link>
                     <Link to="" className="navbar-item navbar_tabs">
                         <span>Category 2</span>

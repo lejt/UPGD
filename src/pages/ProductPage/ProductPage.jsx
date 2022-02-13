@@ -3,18 +3,31 @@ import { useState, useEffect } from 'react';
 import * as ordersAPI from "../../utilities/orders-api"; 
 import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
+
 import CategoryList from "../../components/CategoryList/CategoryList";
+import CategoryListPeripherals from "../../components/CategoryListPeripherals/CategoryListPeripherals";
+
 import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function ProductPage({cart, setCart, handleAddToOrder}) {
+export default function ProductPage({pageCategory, cart, setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [addMsg, setAddMsg] = useState(false);
 
+    let getProduct;
+    switch (pageCategory) {
+        case "allProducts":
+            getProduct = '';
+            break;
+        case "peripherals":
+            getProduct = "peripheral"
+            break;
+    }
+
     useEffect(function() {
         async function getProducts() {
-            const items = await itemsAPI.getAll();
+            const items = await itemsAPI.getAll(getProduct);
             // console.log(items.products);
             // console.log(Object.values(items.products))
             // console.log(items.products)
@@ -30,7 +43,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
         getCart();
 
         
-    },[]);
+    },[pageCategory]);
 
     useEffect(function() {
         setTimeout(()=> {
@@ -90,7 +103,7 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
             
 
             <div className="products_banner">
-                <h1>All Products</h1>
+                <h1>{pageCategory}</h1>
             </div>
             <div className="products_header">
                 <h3>{products.length} Items</h3>
@@ -111,7 +124,8 @@ export default function ProductPage({cart, setCart, handleAddToOrder}) {
 
             <div className="products_display">
                 <aside className="products_categories">
-                    <CategoryList searchProducts={searchProducts}/>
+                    {/* <CategoryList searchProducts={searchProducts}/> */}
+                    <CategoryListPeripherals pageCategory={pageCategory} searchProducts={searchProducts}/>
                 </aside>
                 <aside className="products_product">
                     {/* {console.log(products.products)} */}

@@ -5,7 +5,7 @@ import {useState} from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
-export default function CategoryList({searchProducts}) {
+export default function CategoryList({pageCategory, searchProducts}) {
     const [category1, setCategory1] = useState(false);
     const [category2, setCategory2] = useState(false);
     const [category3, setCategory3] = useState(false);
@@ -13,26 +13,28 @@ export default function CategoryList({searchProducts}) {
     const [category5, setCategory5] = useState(false);
     const [category6, setCategory6] = useState(false);
 
-    function handleCatToggle1() {
-        setCategory1(!category1)
-    }
-    function handleCatToggle2() {
-        setCategory2(!category2)
-    }
-    function handleCatToggle3() {
-        setCategory3(!category3)
-    }
-    function handleCatToggle4() {
-        setCategory4(!category4)
-    }
-    function handleCatToggle5() {
-        setCategory5(!category5)
-    }
-    function handleCatToggle6() {
-        setCategory6(!category6)
-    }
+    // function handleCatToggle1() {
+    //     setCategory1(!category1)
+    // }
+    // function handleCatToggle2() {
+    //     setCategory2(!category2)
+    // }
+    // function handleCatToggle3() {
+    //     setCategory3(!category3)
+    // }
+    // function handleCatToggle4() {
+    //     setCategory4(!category4)
+    // }
+    // function handleCatToggle5() {
+    //     setCategory5(!category5)
+    // }
+    // function handleCatToggle6() {
+    //     setCategory6(!category6)
+    // }
+
 
     function searchQuery1() {
+        
         searchProducts('CPU')
     }
     function searchQuery2() {

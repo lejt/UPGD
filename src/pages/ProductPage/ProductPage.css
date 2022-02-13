@@ -1,6 +1,8 @@
 .products {
-    background-color: rgb(237, 237, 236);
     padding-bottom: 50px;
+    background: rgb(99,99,99);
+background: linear-gradient(0deg, rgba(99,99,99,1) 6%, rgba(116,116,116,1) 16%, rgba(126,126,126,1) 19%, rgba(135,135,135,1) 25%, rgba(153,153,153,1) 30%, rgba(161,161,161,1) 35%, rgba(237,237,236,1) 91%);
+
 }
 .products_banner {
     background: rgb(25,25,25);
