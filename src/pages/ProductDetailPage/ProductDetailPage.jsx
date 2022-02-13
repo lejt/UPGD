@@ -61,7 +61,12 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
 
             <div className="product_header">
                 <div className="product_image">
+                    {productImage
+                    ?
                     <img src={ productImage } alt="" />
+                    :
+                    <img src={ productPassed.image } alt="" />
+                    }
                 </div>
 
                 <div className="product_profile">
@@ -89,7 +94,13 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
 
             <div className="product_info">
                 <h4 className="title is-4">Description</h4>
+                {productInfo 
+                ?
                 <p>{productInfo}</p>
+                :
+                <h4 className="product_no_info">-</h4>
+                }
+                
             </div>
 
             <hr/>

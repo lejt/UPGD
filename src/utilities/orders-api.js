@@ -4,7 +4,6 @@ const BASE_URL = '/api/orders';
 
 // Retrieve an unpaid order for the logged in user
 export function getCart() {
-    console.log('orders api here');
     return sendRequest(`${BASE_URL}/cart`);
 }
 // Add an item to the cart

@@ -71,9 +71,6 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
                             <button onClick={()=> searchProducts(searchQuery)}><SearchIcon/></button>
                         </div>
                     </div>
-                    <div>
-                        <h3>Sort By</h3>
-                    </div>
                 </div>
             </div>
 

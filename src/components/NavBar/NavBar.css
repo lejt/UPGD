@@ -8,15 +8,10 @@
   width: 25vw;
   color: black;
 }
-.navbar-brand h1 {
-  color: white;
-  /* margin-left: 30px; */
-}
 .navbar-brand {
   display: flex;
   align-items: center;
 }
-
 /* Nav Logo CSS and animation */
 .btn-shine {
   padding: 12px 48px;
