@@ -27,7 +27,9 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
             <div className="navbar-brand">
                 <Link to="/">
                     <div className="navbar-item">
-                        <h1 className="btn-shine title is-3">// UPGD</h1>
+                        <div>
+                            <h1 className="btn-shine title is-3">// UPGD</h1>
+                        </div>
                     </div>
                 </Link>
             </div>

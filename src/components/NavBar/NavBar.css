@@ -1,12 +1,24 @@
+.navbar {
+  height: 70px;
+}
 .navbar-link div {
-    display: flex;
+  display: flex;
 }
 .navbar_checkout_dropdown {
-    width: 25vw;
-    color: black;
+  width: 25vw;
+  color: black;
 }
+.navbar-brand h1 {
+  color: white;
+  margin-left: 30px;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
 /* Nav Logo CSS and animation */
-.btn-shine {
+/* .btn-shine {
     background-color: black;
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -30,4 +42,4 @@
       {background-position: 220px}
     100%
       {background-position: 220px}
-}
+} */

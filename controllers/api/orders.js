@@ -39,7 +39,6 @@ async function deleteItemInCart(req, res) {
   res.json(cart);
 }
 
-
 // Update the cart's isPaid property to true
 async function checkout(req, res) {
   const cart = await Order.getCart(req.user._id);
