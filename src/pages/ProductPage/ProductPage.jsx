@@ -3,17 +3,14 @@ import { useState, useEffect } from 'react';
 import * as ordersAPI from "../../utilities/orders-api"; 
 import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
-
 import CategoryList from "../../components/CategoryList/CategoryList";
 
-
-import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function ProductPage({pageCategory, cart, setCart, handleAddToOrder}) {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const [addMsg, setAddMsg] = useState(false);
+    
 
     let getProduct;
     switch (pageCategory) {
@@ -48,12 +45,7 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
         
     },[pageCategory]);
 
-    useEffect(function() {
-        setTimeout(()=> {
-            setAddMsg(false);
-            console.log('UseEF SETTIME: '+addMsg)
-        }, 1000);
-    }, [addMsg]);    
+  
 
 
     // useEffect(()=> {
@@ -81,29 +73,10 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
         setProducts(Object.values(items.products));
     }
 
-    function handleAddMessage() {
-        console.log('CLICK, before first change'+addMsg)
-        setAddMsg(!addMsg)
-        // setTimeout(handleHideAddMessage,3000)
-        // handleHideAddMessage()
-    }
-    console.log('after CLICK'+addMsg)
+
 
     return (
         <div className="products">
-
-            {/* popup message when add button clicked */}
-            {/* <div className={`notification is-success `}>
-                <button className="delete"></button>
-                Lorem ipsum
-            </div> */}
-            {console.log('just before msg'+addMsg)}
-            {addMsg ?
-            <ExpireMsg delay="2000">Successfully added item to cart</ExpireMsg>
-            :
-            null
-            }
-            
 
             <div className="products_banner">
                 <h1>{pageCategory.toUpperCase()}</h1>
@@ -132,7 +105,7 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
                 <aside className="products_product">
                     {/* {console.log(products.products)} */}
                     {/* {products.products.forEach(p=>console.log(p.title))} */}
-                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} handleAddMessage={handleAddMessage} />
+                    <ProductList products={products} setCart={setCart} handleAddToOrder={handleAddToOrder} />
                 </aside>
             </div>
         </div>

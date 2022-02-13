@@ -7,6 +7,7 @@ export default function HomePage({ user, setCart }) {
 
     useEffect(function() {
         if (user) {
+            console.log('There is a user')
             async function getCart() {
                 console.log("running useEffect getCart")
                 const cart = await ordersAPI.getCart();
@@ -14,6 +15,7 @@ export default function HomePage({ user, setCart }) {
             }
             getCart();
         } else return null;
+        console.log('There is no user')
     },[]);
 
     return (

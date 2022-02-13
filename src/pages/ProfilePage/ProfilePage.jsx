@@ -37,8 +37,14 @@ export default function ProfilePage({user, orders, setOrders, setCart}) {
             <hr/>
 
             <h4 className="profile_orders title is-4">Order History</h4>
-            {orders.map((order,idx)=>console.log(order))}
-            {orders.map((order,idx)=> <OrderHistoryList key={idx} order={order} />)}
+            {orders[0] 
+            ?
+            orders.map((order,idx)=> <OrderHistoryList key={idx} order={order} />)
+            :
+            <div className="is-flex is-justify-content-center">
+                <h5 className="subtitle is-6">- No past orders -</h5>
+            </div>
+            }
         </div>
     )
 }

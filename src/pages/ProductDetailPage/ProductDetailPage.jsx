@@ -4,13 +4,15 @@ import { useParams, useLocation } from "react-router-dom";
 import * as itemsAPI from '../../utilities/items-api';
 import * as ordersAPI from '../../utilities/orders-api';
 import ProductReview from '../../components/ProductReview/ProductReview';
+import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 
 export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
     const [productOne, setProductOne] = useState([]);
     const [productReviews, setProductReviews] = useState([]);
     const [productImage, setProductImage] = useState("");
     const [productInfo, setProductInfo] = useState("");
-    
+    const [addMsg, setAddMsg] = useState(false);
+
     const { productName } = useParams();
     const location = useLocation();
     const productPassed = location.state.dataToDetail;
@@ -42,9 +44,39 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
 
     },[]);
 
+    useEffect(function() {
+        setTimeout(()=> {
+            setAddMsg(false);
+            console.log('UseEF SETTIME: '+addMsg)
+        }, 1000);
+    }, [addMsg]);  
+
+    function handleAddMessage() {
+        console.log('CLICK, before first change'+addMsg)
+        setAddMsg(!addMsg)
+        // setTimeout(handleHideAddMessage,3000)
+        // handleHideAddMessage()
+    }
+    console.log('after CLICK'+addMsg)
+
+
     // productOne.reviews.forEach(r=> console.log(r));
     return (
         <div className="product_detail_page">
+
+            {/* popup message when add button clicked */}
+            {/* <div className={`notification is-success `}>
+                <button className="delete"></button>
+                Lorem ipsum
+            </div> */}
+            {console.log('just before msg'+addMsg)}
+            {addMsg ?
+            <ExpireMsg delay="2000">Successfully added item to cart</ExpireMsg>
+            :
+            null
+            }
+
+
             {/* { productName } */}
             {/* { productPassed.link } */}
             <div className="product_header">
@@ -57,7 +89,14 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
                     <br/>
                     <br/>
                     <button 
-                        onClick={()=> {handleAddToOrder(productPassed)}}
+                        onClick={
+                            ()=> {
+                                return (
+                                        handleAddToOrder(productPassed),
+                                        handleAddMessage()
+                                )
+                            }
+                        }
                         className="button is-warning is-fullwidth is-focused"
                     >
                     <span>Add to Cart</span>

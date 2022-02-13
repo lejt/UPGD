@@ -1,7 +1,7 @@
 import "./ProductListItem.css";
 import { Link } from "react-router-dom";
 
-export default function ProductListItem({product, handleAddToOrder, handleAddMessage}) {
+export default function ProductListItem({product, handleAddToOrder}) {
     
     function findPeriodIdx(data) {
         return data.indexOf(".");
