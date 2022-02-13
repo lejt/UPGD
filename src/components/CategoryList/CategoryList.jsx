@@ -6,13 +6,13 @@ export default function CategoryList({pageCategory, searchProducts}) {
     const categoryLookup = {
         allProducts : 
             {
-                searchQuery: ['CPU', 'Video', 'Motherboard', 'Case', 'Fan', 'Power'],
-                selector : ['CPU', 'GPU', 'Motherboards', 'Computer Case', 'Fans & PC Cooling', 'Power Supplies'],
+                searchQuery: ['Processor', 'Video', 'Motherboard', 'Case', 'Fan', 'Power', 'ram'],
+                selector : ['CPU', 'GPU', 'Motherboards', 'Computer Case', 'Fans & PC Cooling', 'Power Supplies', 'Memory'],
             },
         peripherals :
             {
                 searchQuery: ['Mouse', 'Keyboard', 'Headphones', 'Microphone', 'Webcam'],
-                selector : ['Mice', 'Keyboard', 'Headphones', 'Ext. Microphones', 'Webcams'],
+                selector : ['Mice', 'Keyboards', 'Headphones', 'Ext. Microphones', 'Webcams'],
             },
         accessories :
             {

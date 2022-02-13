@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# UPGD - A Modern E-Commerce store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General Information
+UPGD is short for upgrade/update. It is an online store to purchase computer hardware and accessories. The web app is user-centric, allowing visitors to browse products and product details but unable to add items to cart until logged in. Visitors will register with a name, email, and passsword which are then sent to the backend via AJAX and later encoded (JWT). Once logged in, users will have access to full CRUD in their shopping cart and also pay via Stripe API.
 
-## Available Scripts
+<img src="/public/assets/screenshots/homepage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/productpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/productdetailpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/paymentpage.jpg" width=200px height=500px overflow="hidden">
+<img  src="/public/assets/screenshots/purchaseconfirmationpage.jpg" width=200px height=500px overflow="hidden"> <img  src="/public/assets/screenshots/profilepage.jpg" width=200px height=500px overflow="hidden">
 
-In the project directory, you can run:
+## Technologies used
+* React
+* HTML, CSS, & Javascript
+* MongoDB, Express, Node
+* Heroku app Deployment
+* Git v2.33.1 Mac
+* Visual Studio Code v1.62.3
 
-### `npm start`
+## Features
+### Usage
+* Visit [UPGD](https://u-p-g-d.herokuapp.com/) today and experience what a modern electronic E-commerce store should look like!
+* [Project Planning](https://trello.com/b/t7Uf6C1V/e-commerce-mern) with WireFrames and ERD.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Implemented
+* Token-based Authentication (JWT)
+* Newegg Data Scraper API (product search through query and url)
+* User-centric CRUD functionality - GET, POST, PUT, and DELETE HTML methods from backend node server
+* Mongo database with mongoose schemas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Future Development Ideas
+* Provide sorting functionality after receiving data from API in front end
+* Save encrypted data such as payment information, address, and phone number tied to each user
+* Have structure space readily available for ad-integration
+* Display more user-preference items based on categories in purchase history
+* Include other forms of payment such as paypal and shopify
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
