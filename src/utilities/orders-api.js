@@ -7,28 +7,26 @@ export function getCart() {
     console.log('orders api here');
     return sendRequest(`${BASE_URL}/cart`);
 }
-  
 // Add an item to the cart
 export function addItemToCart(product) {
-    // Just send itemId for best security (no pricing)
-    // SENDING WHOLE OBJ HERE, including pricing, which is not the best practice
-    console.log('orders api addToCart here' + product.title, product.price);
-    // const stringifiedProduct = JSON.stringify(product);
+    // sending whole object to backend, including pricing, which is not the best practice
+    // however, due to lack of unique id from data scraper api, whole item objects must be sent
+    // and logged into backend database to acquire unique id for further fetching
     return sendRequest(`${BASE_URL}/cart/items`, 'POST', {product});
-    // return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');
 }
-
+// Change item quantity in navbar cart
 export function setItemQtyInCart(itemId, newQty) {
     return sendRequest(`${BASE_URL}/cart/qty`, 'PUT', { itemId, newQty });
 }
+// Remove item from navbar cart
 export function deleteItemInCart(itemId) {
     return sendRequest(`${BASE_URL}/cart/item/${itemId}`, 'DELETE', {itemId});
 }
 // Updates the order's (cart's) isPaid property to true
 export function checkout() {
-    // Changing data on the server, so make it a POST request
     return sendRequest(`${BASE_URL}/cart/checkout`, 'POST');
 }
+// Gets all isPaid true orders
 export function getOrderHistory() {
     return sendRequest(`${BASE_URL}/history`);
 }

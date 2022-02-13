@@ -11,9 +11,7 @@ const lineItemSchema = new Schema({
 });
 
 lineItemSchema.virtual('extPrice').get(function() {
-  // 'this' refers to the lineItem subdocument
   return (this.qty*this.item.price)
-  // return this.qty * this.item.price;
 });
 
 const orderSchema = new Schema({
@@ -25,9 +23,7 @@ const orderSchema = new Schema({
     toJSON: { virtuals: true }
 });
 
-
 orderSchema.virtual('orderTotal').get(function() {
-  // 'this' refers to the order document
   return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
 });
 
@@ -35,10 +31,8 @@ orderSchema.virtual('totalQty').get(function() {
   return this.lineItems.reduce((total, item) => total + item.qty, 0);
 });
 
-// statics are methods callable on the Model
 // creates a first order in order model if none
 orderSchema.statics.getCart = function(userId) {
-  // 'this' refers to the Order model
   return this.findOneAndUpdate(
     // query obj
     {user: userId, isPaid: false},
@@ -52,32 +46,27 @@ orderSchema.statics.getCart = function(userId) {
 };
 
 orderSchema.methods.addItemToCart = async function(productTitle, productPrice, productShipping, productImage, productLink) {
-    
     const cart = this;
-
     const lineItem = cart.lineItems.find(lineItem => lineItem.item.title === productTitle)
 
     if (lineItem) {
-      console.log('Already in cart, so +1 quantity to: '+lineItem);
       lineItem.qty += 1;
     } else {
-      // adds whole item to cart if not in cart already
+      // Adds whole item object to cart if not in cart already
+
+      // Price formatting received from data scraper API, 
+      // Remove unwanted characters and converts price type string to float
       function findPeriodIdx(data) {
         return data.indexOf(".");
       }
       let periodIdx;
       productPrice = (productPrice.replace(',','')).trim();
       productShipping = productShipping.trim();
-      console.log(productPrice, productShipping);
 
-      // converts price type string to float
       periodIdx = findPeriodIdx(productPrice);
-      console.log('Period index from price: '+ productPrice +periodIdx);
-
       productPrice = parseFloat(productPrice.slice(1,periodIdx+3));
-      console.log('ProductPrice: '+ productPrice);
   
-      // checks if there is shipping cost and converts to float
+      // Checks if there is shipping cost and converts to float, Icebox feature
       if (productShipping.includes('$')) {
         periodIdx = findPeriodIdx(productShipping);
         productShipping = parseFloat(productShipping.slice(1,periodIdx+3));
@@ -92,18 +81,14 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
         image: productImage,
         link: productLink,
       }
-  
       cart.lineItems.push({item});
     }
-
     return cart.save();
 }
 
 orderSchema.methods.setItemQty = function(itemId, newQty) {
   const cart = this;
-  
   const lineItem = cart.lineItems.find(lineItem => lineItem._id.equals(itemId));
-  // console.log(lineItem)
 
   if (lineItem && newQty <= 0) {
     lineItem.remove();
@@ -117,8 +102,6 @@ orderSchema.methods.deleteItem = function(itemId) {
   const cart = this;
   const lineItem = cart.lineItems.find(lineItem => lineItem._id.equals(itemId));
   lineItem.remove();
-  // console.log(lineItem)
-
   return cart.save();
 }
 

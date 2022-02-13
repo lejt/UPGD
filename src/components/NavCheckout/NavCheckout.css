@@ -4,17 +4,14 @@
 }
 .navbar_checkout_dropdown_imgntitle {
     display: flex;
-    /* border: 1px solid orange; */
     justify-content: space-between;
     align-items: center;
 }
 .navbar_checkout_dropdown_img {
-    /* border: 1px solid blue; */
     height: 100%;
     width: 20%;
 }
 .navbar_checkout_dropdown_title {
-    /* border: 1px solid red; */
     height: 100%;
     width: 80%;
 }
@@ -27,5 +24,5 @@
 }
 .navbar_remove_item {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }

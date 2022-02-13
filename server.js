@@ -16,11 +16,7 @@ app.use(express.json());
 
 
 // STRIPE
-// for localhost testing
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-// for deployment
-// const stripe = require('stripe')(pk_test_51KQxaQIdi9UJJW0jgeryB73SUH4nyfRmUJhUe8K7yzLMldAVoRy1sUer59afoyu9e9gIxZaF3X17jeLpWXIYSP7W00WSlzEpWW);
-
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder

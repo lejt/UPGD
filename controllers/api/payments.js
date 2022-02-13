@@ -3,17 +3,11 @@ const Order = require('../../models/order');
 module.exports = {
     getPayment,
 };
-// for localhost testing
+// Require stripe in backend
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-// for deployment
-// const stripe = require('stripe')(pk_test_51KQxaQIdi9UJJW0jgeryB73SUH4nyfRmUJhUe8K7yzLMldAVoRy1sUer59afoyu9e9gIxZaF3X17jeLpWXIYSP7W00WSlzEpWW);
 
-// A cart is the unpaid order for a user
 async function getPayment(req, res) {
-    console.log('made it to controller payment')
     const cart = await Order.getCart(req.user._id);
- 
-    cart.lineItems.forEach(item=> console.log(item.item.title+": "+item.item.price));
 
     try {
         const session = await stripe.checkout.sessions.create({
@@ -27,6 +21,7 @@ async function getPayment(req, res) {
                         product_data: {
                             name: item.item.title,
                         },
+                        // Stripe API accepts price in units of cents
                         unit_amount: parseFloat(((item.item.price)*100).toFixed(2)),
                     },
                     quantity: item.qty,
@@ -37,7 +32,7 @@ async function getPayment(req, res) {
             cancel_url: `http://localhost:3000/`
 
             // for deployment 
-            // success_url: `https://u-p-g-d.herokuapp.com/`,
+            // success_url: `https://u-p-g-d.herokuapp.com/checkout/completed`,
             // cancel_url: `https://u-p-g-d.herokuapp.com/`
     })
         res.json({ url: session.url })

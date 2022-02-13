@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const paymentsCtrl = require('../../controllers/api/payments');
+const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
-// POST /create-checkout-session
-// router.post('/', paymentsCtrl.getPayment);
-router.post('/', paymentsCtrl.getPayment);
+// POST /create-checkout-session to Stripe API
+router.post('/', ensureLoggedIn, paymentsCtrl.getPayment);
 
 module.exports = router;

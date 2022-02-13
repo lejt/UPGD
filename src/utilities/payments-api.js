@@ -1,39 +1,28 @@
-// const BASE_URL = 'http://localhost:3000/create-checkout-session';
-
 import { getToken } from './users-service';
 
 export async function getPayment() {
-    // return sendRequest(`${BASE_URL}`, 'POST', {CARTITEMS});
+
     console.log('start of fetch')
     const token = getToken();
     fetch("/create-checkout-session", {
-    // fetch("http://localhost:3000/create-checkout-session", {
+  
         method: "POST",
+        // required user token to access user cart in backend
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
+        // body is empty as data (cart items) will be pulled from back end
         body: JSON.stringify(),
-          // {
-          // dont need to pass anything since we just grab cart in the back from req.user.id
-          // items: [
-          //   { id: 1, quantity: 3 },
-          //   { id: 2, quantity: 1 },
-          // ],
-        // }),
-
     })
     .then(res => {
         if (res.ok) {
-          console.log('ok')
           return res.json()
         }
-        console.log('not ok')
         return res.json().then(json => Promise.reject(json))
     })
     .then(({ url }) => {
         window.location = url
-        // console.log(url)
     })
     .catch(e => {
         console.error(e.error)
