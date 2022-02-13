@@ -6,52 +6,43 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 export default function CategoryList({pageCategory, searchProducts}) {
-    const [category1, setCategory1] = useState(false);
-    const [category2, setCategory2] = useState(false);
-    const [category3, setCategory3] = useState(false);
-    const [category4, setCategory4] = useState(false);
-    const [category5, setCategory5] = useState(false);
-    const [category6, setCategory6] = useState(false);
 
-    // function handleCatToggle1() {
-    //     setCategory1(!category1)
-    // }
-    // function handleCatToggle2() {
-    //     setCategory2(!category2)
-    // }
-    // function handleCatToggle3() {
-    //     setCategory3(!category3)
-    // }
-    // function handleCatToggle4() {
-    //     setCategory4(!category4)
-    // }
-    // function handleCatToggle5() {
-    //     setCategory5(!category5)
-    // }
-    // function handleCatToggle6() {
-    //     setCategory6(!category6)
-    // }
+    const categoryLookup = {
+        allProducts : 
+            {
+                searchQuery: ['CPU', 'Video', 'Motherboard', 'Case', 'Fan', 'Power'],
+                selector : ['CPU', 'GPU', 'Motherboards', 'Computer Case', 'Fans & PC Cooling', 'Power Supplies'],
+            },
+        peripherals :
+            {
+                searchQuery: ['Mouse', 'Keyboard', 'Headphones', 'Microphone', 'Webcam'],
+                selector : ['Mice', 'Keyboard', 'Headphones', 'Ext. Microphones', 'Webcams'],
+            },
+        accessories :
+            {
+                searchQuery: ['mat', 'router', 'cable', 'adapter', 'paste'],
+                selector : ['Mouse Pad/ Desk Mat', 'Router', 'Cables', 'Adapters', 'Thermal Paste'],
+            },
+    }
 
+    let searchQ;
+    let categoryDisplay;
 
-    function searchQuery1() {
-        
-        searchProducts('CPU')
+    switch (pageCategory) {
+        case "all Products":
+            searchQ = categoryLookup.allProducts.searchQuery;
+            categoryDisplay = categoryLookup.allProducts.selector;
+            break;
+        case "peripherals":
+            searchQ = categoryLookup.peripherals.searchQuery;
+            categoryDisplay = categoryLookup.peripherals.selector;
+            break;
+        case "accessories":
+            searchQ = categoryLookup.accessories.searchQuery;
+            categoryDisplay = categoryLookup.accessories.selector;
+            break;
     }
-    function searchQuery2() {
-        searchProducts('Video')
-    }
-    function searchQuery3() {
-        searchProducts('motherboard')
-    }
-    function searchQuery4() {
-        searchProducts('case')
-    }
-    function searchQuery5() {
-        searchProducts('fan')
-    }
-    function searchQuery6() {
-        searchProducts('power')
-    }
+
 
 
     return (
@@ -73,24 +64,14 @@ export default function CategoryList({pageCategory, searchProducts}) {
             </div> */}
 
             <ul>
-                <li onClick={searchQuery1}>
-                    CPU
-                </li>
-                <li onClick={searchQuery2}>
-                    GPU
-                </li>
-                <li onClick={searchQuery3}>
-                    Motherboards
-                </li>
-                <li onClick={searchQuery4}>
-                    Computer Case
-                </li>
-                <li onClick={searchQuery5}>
-                    Fans & PC Cooling
-                </li>
-                <li onClick={searchQuery6}>
-                    Power Supplies
-                </li>
+                {searchQ.map((s,idx) => {
+                        return (
+                            <li onClick={()=> searchProducts(s)}>
+                                {categoryDisplay[idx]}
+                            </li>
+                        )
+                    }
+                )}
             </ul>
 
 

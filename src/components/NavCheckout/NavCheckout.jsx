@@ -44,7 +44,7 @@ export default function NavCheckout({item, handleChangeQty, handleDeleteItem}) {
                     ${item.extPrice.toFixed(2)}
                 </div>
             </div>
-            <div>
+            <div className="navbar_remove_item">
                 <button className="button is-danger is-inverted" onClick={()=> handleDeleteItem(item._id)}>Remove Item</button>
             </div>
         </div>

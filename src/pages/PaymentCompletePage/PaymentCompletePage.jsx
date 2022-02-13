@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import PaymentCompleteItems from "../../components/PaymentCompleteItems/PaymentCompleteItems";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Link } from 'react-router-dom';
 
 export default function PaymentCompletePage({user, orders, setOrders}) {
 
@@ -59,20 +60,26 @@ export default function PaymentCompletePage({user, orders, setOrders}) {
                         {toDateString(orders[0].updatedAt)}
                     </div>
                     <div>
-                        {orders[0]._id}
+                        Order ID: {orders[0]._id}
                     </div>
                 </div>
                 <div className="card_content">
                     {orders[0].lineItems.map(items => <PaymentCompleteItems items={items} />)}
                 </div>
+                <hr/>
                 <div className="payment_total">
-                    <p className="title is-4"><strong>Total: </strong><span>${(orders[0]).orderTotal}</span></p>
+                    <p className="title is-4"><strong>Total: </strong><span>${(orders[0]).orderTotal.toFixed(2)}</span></p>
                 </div>
             </div>
             // console.log(orders[0].lineItems)
             :
             <h5>nothing loaded yet</h5>
             } 
+            <Link to='/products'>
+                <div className="payment_back_to_shopping is-flex is-justify-content-center">
+                    <button className="button is-info">Back to Shopping</button>
+                </div>
+            </Link>
         </div>
     )
 }

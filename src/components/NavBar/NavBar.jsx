@@ -52,8 +52,8 @@ export default function NavBar({user, setUser, cart, setCart, handleChangeQty, h
                     <Link to="/products/peripherals" className="navbar-item navbar_tabs">
                         <span>Peripherals</span>
                     </Link>
-                    <Link to="" className="navbar-item navbar_tabs">
-                        <span>Category 2</span>
+                    <Link to="/products/accessories" className="navbar-item navbar_tabs">
+                        <span>Accessories</span>
                     </Link>
 
                     <div className="navbar-item has-dropdown is-hoverable">

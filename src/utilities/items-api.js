@@ -1,6 +1,6 @@
 
 export async function getAll(searchQuery) {
-  if (!searchQuery || searchQuery === '') {
+  if (!searchQuery || searchQuery === 'all') {
     console.log("no query search detected")
     searchQuery = "RTX";
   } else {

@@ -5,7 +5,7 @@ import * as itemsAPI from '../../utilities/items-api';
 import ProductList from "../../components/ProductList/ProductList";
 
 import CategoryList from "../../components/CategoryList/CategoryList";
-import CategoryListPeripherals from "../../components/CategoryListPeripherals/CategoryListPeripherals";
+
 
 import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 import SearchIcon from '@mui/icons-material/Search';
@@ -17,11 +17,14 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
 
     let getProduct;
     switch (pageCategory) {
-        case "allProducts":
-            getProduct = '';
+        case "all Products":
+            getProduct = 'all';
             break;
         case "peripherals":
             getProduct = "peripheral"
+            break;
+        case "accessories":
+            getProduct = "accessory"
             break;
     }
 
@@ -103,7 +106,7 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
             
 
             <div className="products_banner">
-                <h1>{pageCategory}</h1>
+                <h1>{pageCategory.toUpperCase()}</h1>
             </div>
             <div className="products_header">
                 <h3>{products.length} Items</h3>
@@ -124,8 +127,7 @@ export default function ProductPage({pageCategory, cart, setCart, handleAddToOrd
 
             <div className="products_display">
                 <aside className="products_categories">
-                    {/* <CategoryList searchProducts={searchProducts}/> */}
-                    <CategoryListPeripherals pageCategory={pageCategory} searchProducts={searchProducts}/>
+                    <CategoryList pageCategory={pageCategory} searchProducts={searchProducts}/>
                 </aside>
                 <aside className="products_product">
                     {/* {console.log(products.products)} */}
