@@ -50,7 +50,7 @@ function App() {
             <Route path="/signup" element={<SignUpPage user={user} setUser={setUser} />} />
             <Route path="/profile" element={<ProfilePage user={user} orders={orders} setOrders={setOrders} setCart={setCart} />} />
             <Route path="/products" element={<ProductPage pageCategory="all Products" cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
-            <Route path="/products/:productName" element={<ProductDetailPage user={user} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
+            <Route path="/products/:productName" element={<ProductDetailPage user={user} cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/peripherals" element={<ProductPage pageCategory="peripherals" cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/products/accessories" element={<ProductPage pageCategory="accessories" cart={cart} setCart={setCart} handleAddToOrder={handleAddToOrder} />} />
             <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} />} />

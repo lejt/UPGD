@@ -6,7 +6,7 @@ import * as ordersAPI from '../../utilities/orders-api';
 import ProductReview from '../../components/ProductReview/ProductReview';
 import ExpireMsg from "../../components/ExpireMsg/ExpireMsg";
 
-export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
+export default function ProductDetailPage({user, cart, setCart, handleAddToOrder}) {
     const [productOne, setProductOne] = useState([]);
     const [productReviews, setProductReviews] = useState([]);
     const [productImage, setProductImage] = useState("");
@@ -45,7 +45,12 @@ export default function ProductDetailPage({user, setCart, handleAddToOrder}) {
 
     function handleAddMessage() {
         if (user) {
-            setAddMsg(!addMsg)
+            // checks if item in cart has reached limit and thus will not display message if so
+            const check = cart.lineItems.map(item=> {
+                if (item.item.title === productOne.title && item.qty < 5) {
+                    setAddMsg(!addMsg)
+                }
+            })
         }
     }
 

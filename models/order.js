@@ -49,9 +49,9 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
     const cart = this;
     const lineItem = cart.lineItems.find(lineItem => lineItem.item.title === productTitle)
 
-    if (lineItem) {
+    if (lineItem && lineItem.qty < 5) {
       lineItem.qty += 1;
-    } else {
+    } else if (!lineItem) {
       // Adds whole item object to cart if not in cart already
 
       // Price formatting received from data scraper API, 
@@ -72,7 +72,7 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
         productShipping = parseFloat(productShipping.slice(1,periodIdx+3));
       } else {
         productShipping = 0;
-      }
+      } 
   
       const item = {
         title: productTitle,
@@ -83,6 +83,7 @@ orderSchema.methods.addItemToCart = async function(productTitle, productPrice, p
       }
       cart.lineItems.push({item});
     }
+
     return cart.save();
 }
 
