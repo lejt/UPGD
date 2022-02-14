@@ -22,6 +22,7 @@ UPGD is short for upgrade/update. It is an online store to purchase computer har
 ### Implemented
 * Token-based Authentication (JWT)
 * Newegg Data Scraper API (product search through query and url)
+* Stripe API (payment)
 * User-centric CRUD functionality - GET, POST, PUT, and DELETE HTML methods from backend node server
 * Mongo database with mongoose schemas
 
