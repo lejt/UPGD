@@ -1,5 +1,7 @@
 # UPGD - A Modern E-Commerce store
 
+**Note**: Due to the discontinued support of the [data scraper API](https://rapidapi.com/ossacodes/api/newegg-data-scraper/playground/apiendpoint_3b589e88-7cd4-4448-9451-bb0a0ef6566a) used in this project, many features will no longer be available
+
 ## General Information
 UPGD is short for upgrade/update. It is an online store to purchase computer hardware and accessories. The web app is user-centric, allowing visitors to browse products and product details but unable to add items to cart until logged in. Visitors will register with a name, email, and passsword which are then sent to the backend via AJAX and later encoded (JWT). Once logged in, users will have access to full CRUD in their shopping cart and also pay via Stripe API.
 
